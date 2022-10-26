@@ -1,14 +1,15 @@
 import { useState } from "react";
 
 const useHeader = () => {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorElNav, setAnchorElNav] = useState("" || null);
+  const [anchorElUser, setAnchorElUser] = useState("" || null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
+    console.log(event);
   };
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    setAnchorElUser(event.target.value);
   };
 
   const handleCloseNavMenu = () => {

@@ -1,43 +1,47 @@
-import { KeyboardArrowDown } from "@mui/icons-material";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
+import { useState } from "react";
 import useHeader from "../../hooks/useHeader";
 
 const pages = ["Men", "Women", "Exercise", "Accessories"];
+const categories = ["Compress Gear", "Home", "Albow Support"];
 
 const Desktop = () => {
-  const { handleCloseNavMenu, handleOpenNavMenu } = useHeader();
+  const [cat, setCat] = useState("");
+  const { handleOpenNavMenu, anchorElNav, handleCloseNavMenu } = useHeader();
+  const handleCategory = (item) => {
+    setCat(item);
+  };
   return (
-    <>
-      <Typography
-        variant="h5"
-        noWrap
-        component="a"
-        href=""
+    <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+      <Button onClick={handleOpenNavMenu}>Men</Button>
+      <Button onClick={handleOpenNavMenu}>Women</Button>
+      <Button onClick={handleOpenNavMenu}>Exercise</Button>
+      <Button onClick={handleOpenNavMenu}>Accessories</Button>
+      <Menu
+        id="menu-appbar"
+        anchorEl={anchorElNav}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        open={anchorElNav}
+        onClose={handleCloseNavMenu}
         sx={{
-          mr: 2,
-          display: { xs: "flex", md: "none" },
-          //   flexGrow: 1,
-          fontFamily: "monospace",
-          fontWeight: 700,
-          letterSpacing: ".3rem",
-          color: "inherit",
-          textDecoration: "none",
+          display: { xs: "block", md: "block" },
         }}
       >
-        Fitness Lab
-      </Typography>
-      <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
         {pages.map((page) => (
-          <Button
-            key={page}
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: "white", display: "block" }}
-          >
-            {page} <KeyboardArrowDown />
-          </Button>
+          <MenuItem key={page} onClick={handleCloseNavMenu}>
+            <Typography textAlign="center">{page}</Typography>
+          </MenuItem>
         ))}
-      </Box>
-    </>
+      </Menu>
+    </Box>
   );
 };
 

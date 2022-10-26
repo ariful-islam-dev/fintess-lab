@@ -2,6 +2,7 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import useHeader from "../../hooks/useHeader";
+import Logo from "../Logo";
 
 const pages = ["Men", "Women", "Exercise", "Accessories"];
 
@@ -9,23 +10,7 @@ const Mobile = () => {
   const { handleCloseNavMenu, handleOpenNavMenu, anchorElNav } = useHeader();
   return (
     <>
-      <Typography
-        variant="h6"
-        noWrap
-        component="a"
-        href="/"
-        sx={{
-          mr: 2,
-          display: { xs: "none", md: "flex" },
-          fontFamily: "monospace",
-          fontWeight: 700,
-          letterSpacing: ".3rem",
-          color: "inherit",
-          textDecoration: "none",
-        }}
-      >
-        Fitness Lab
-      </Typography>
+      <Logo style={{ xs: "none", md: "flex" }} />
 
       <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
         <IconButton
@@ -34,7 +19,6 @@ const Mobile = () => {
           aria-controls="menu-appbar"
           aria-haspopup="true"
           onClick={handleOpenNavMenu}
-          color="inherit"
         >
           <MenuIcon />
         </IconButton>

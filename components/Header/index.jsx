@@ -9,7 +9,7 @@ import SearchBar from "../Serach";
 
 function Header() {
   return (
-    <AppBar position="static">
+    <AppBar sx={{ background: "#ffffff" }}>
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           {/* Mobile Menu */}
