@@ -1,7 +1,5 @@
-import { ShoppingCart } from "@mui/icons-material";
 import {
   Avatar,
-  Badge,
   Box,
   IconButton,
   Menu,
@@ -9,27 +7,15 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import useHeader from "../../hooks/useHeader";
-import useModal from "../../hooks/useModal";
-import ModalBox from "../ModalBox";
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import React from "react";
+import useHeader from "../../../hooks/useHeader";
 
-const UserNav = () => {
-  const { handleOpenUserMenu, handleCloseUserMenu, anchorElUser } = useHeader();
-  const { open, handleClickOpen, handleClose } = useModal();
+const AvatarIcon = () => {
+  const { handleCloseUserMenu, handleOpenUserMenu, anchorElUser } = useHeader();
+  const settings = ["Profile", "Account", "Dashboard", "Logout"];
   return (
     <>
       <Box sx={{ flexGrow: 0 }}>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          
-          onClick={handleClickOpen}
-        >
-          <Badge badgeContent={17} color="error">
-            <ShoppingCart />
-          </Badge>
-        </IconButton>
         <Tooltip title="Open settings">
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -58,9 +44,8 @@ const UserNav = () => {
           ))}
         </Menu>
       </Box>
-      <ModalBox open={open} handleClose={handleClose} />
     </>
   );
 };
 
-export default UserNav;
+export default AvatarIcon;

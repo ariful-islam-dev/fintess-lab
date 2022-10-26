@@ -1,15 +1,14 @@
 import { useState } from "react";
-
 const useHeader = () => {
-  const [anchorElNav, setAnchorElNav] = useState("" || null);
-  const [anchorElUser, setAnchorElUser] = useState("" || null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const open = anchorElNav;
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-    console.log(event);
   };
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.target.value);
+    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -26,6 +25,7 @@ const useHeader = () => {
     handleOpenUserMenu,
     anchorElNav,
     anchorElUser,
+    open,
   };
 };
 

@@ -1,17 +1,14 @@
-import { KeyboardArrowDown } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
-import useHeader from "../../hooks/useHeader";
-import Logo from "../Logo";
-
-const pages = ["Men", "Women", "Exercise", "Accessories"];
+import { Box, IconButton, Menu } from "@mui/material";
+import React from "react";
+import useHeader from "../../../hooks/useHeader";
+import Dropdown from "./Dropdown";
 
 const Mobile = () => {
-  const { handleCloseNavMenu, handleOpenNavMenu, anchorElNav } = useHeader();
+  const { handleOpenNavMenu, anchorElNav, handleCloseNavMenu } = useHeader();
+  const pages = ["Men", "Women", "Exercise", "Accessories"];
   return (
     <>
-      <Logo style={{ xs: "none", md: "flex" }} />
-
       <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
         <IconButton
           size="large"
@@ -19,6 +16,7 @@ const Mobile = () => {
           aria-controls="menu-appbar"
           aria-haspopup="true"
           onClick={handleOpenNavMenu}
+          color="inherit"
         >
           <MenuIcon />
         </IconButton>
@@ -41,10 +39,7 @@ const Mobile = () => {
           }}
         >
           {pages.map((page) => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">{page}</Typography>{" "}
-              <KeyboardArrowDown />
-            </MenuItem>
+            <Dropdown key={page}>{page}</Dropdown>
           ))}
         </Menu>
       </Box>

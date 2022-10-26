@@ -1,12 +1,18 @@
+import { Container } from "@mui/material";
 import React from "react";
+import FooterBottom from "./FooterBottom";
+import { FooterArea } from "./FooterStyle";
+import FooterTop from "./FooterTop";
 
 const Footer = () => {
   return (
-    <footer>
-      <small>
-        <center>&copy; All Right Reserved Team E `Fitness Lab` </center>
-      </small>
-    </footer>
+    <FooterArea>
+      <Container>
+        <FooterTop />
+        <hr />
+        <FooterBottom />
+      </Container>
+    </FooterArea>
   );
 };
 
