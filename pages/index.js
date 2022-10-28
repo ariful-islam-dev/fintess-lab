@@ -1,10 +1,6 @@
 import { Box } from "@mui/material";
-import Checkout from "./Checkout";
+import Checkout from "./checkout";
 
 export default function Home() {
-  return (
-    <Box>
-      <Checkout></Checkout>
-    </Box>
-  );
+  return <Box></Box>;
 }
