@@ -1,27 +1,18 @@
-import { Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import React from "react";
+import logoImage from "../../../public/logo.svg";
+import { Logo as SiteLogo } from "../../Styles/Header";
 
 const Logo = ({ display }) => {
   return (
     <>
-      <Typography
-        variant="h6"
-        noWrap
-        component="a"
-        href="/"
+      <SiteLogo
         sx={{
-          mr: 2,
           display: display,
-          fontFamily: "Montserrat",
-          flexGrow: { xs: "2", md: "0" },
-          fontWeight: 700,
-
-          color: "inherit",
-          textDecoration: "none",
         }}
       >
-        FITNESS <Stack sx={{ color: "#D23F57", ml: "4px" }}> LAB</Stack>
-      </Typography>
+        <Image src={logoImage} alt="Picture of the author" />
+      </SiteLogo>
     </>
   );
 };

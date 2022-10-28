@@ -9,7 +9,6 @@ export default function Widget({ item }) {
   const handleClick = () => {
     setOpen(!open);
   };
-  console.log(Object.values(item));
   return (
     <List
       sx={{ width: "100%" }}

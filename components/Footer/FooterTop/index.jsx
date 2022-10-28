@@ -74,7 +74,6 @@ const FooterTop = () => {
   return (
     <Grid container spacing={2}>
       {footComHeading.map((item) => {
-        console.log(item);
         return (
           <Grid key={item} item lg={3}>
             <Typography container="h6" variant="h6">
