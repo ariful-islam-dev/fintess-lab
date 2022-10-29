@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import { styled } from '@mui/material/styles'
 
 
 export const FooterArea = styled(("footer"))(({ theme })=>({
-    backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.secondary.gray50 
+    background: theme.palette?.secondary?.main, 
+    color: theme.palette?.secondary?.gray50 
 }))
 
 

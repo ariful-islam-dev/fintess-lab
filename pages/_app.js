@@ -1,5 +1,5 @@
 import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@mui/material/styles';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { theme } from '../components/Styles';
