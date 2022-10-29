@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import styled from "styled-components";
 
 
@@ -12,9 +13,9 @@ export const BannerTitle = styled(('h1'))(({theme})=>({
     textTransform: 'uppercase'
 }));
 
-export const ButtonMaster = styled(('button'))(({theme, color})=>({
-    color:`${( color === 'secondary' && theme.palette?.secondary.main) || (color === 'light'&& theme.palette?.primary.main) || ( !color &&theme.palette?.secondary.gray50)}`, 
-    background: `${(color === 'secondary'&& theme.palette.secondary.gray50) || (color === 'light' && theme.palette.primary.light) ||(!color && theme.palette.primary.main)}`,
+export const ButtonMaster = styled(Button)(({theme, bg})=>({
+    color:`${( bg === 'secondary' && theme.palette?.secondary.main) || (bg === 'light'&& theme.palette?.primary.main) || ( !bg &&theme.palette?.secondary.gray50)}`, 
+    background: `${(bg === 'secondary'&& theme.palette.secondary.gray50) || (bg === 'light' && theme.palette.primary.light) ||(!bg && theme.palette.primary.main)}`,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -24,8 +25,8 @@ export const ButtonMaster = styled(('button'))(({theme, color})=>({
     font: theme.font.interSemiBold16,     
     textTransform: 'none', 
     "&: hover":{
-        color: `${color === 'secondary'&& theme.palette.secondary.gray50 ||color === 'light'&& theme.palette.secondary.gray50|| theme.palette.secondary.gray50}`,
-        background: `${color === 'secondary' && theme.palette.primary.main ||color === 'light' && theme.palette.primary.main || theme.palette?.primary.dark }`
+        color: `${bg === 'secondary'&& theme.palette.secondary.gray50 ||bg === 'light'&& theme.palette.secondary.gray50|| theme.palette.secondary.gray50}`,
+        background: `${bg === 'secondary' && theme.palette.primary.main ||bg === 'light' && theme.palette.primary.main || theme.palette?.primary.dark }`
     }
    
 }))
