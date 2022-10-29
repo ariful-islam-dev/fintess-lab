@@ -48,6 +48,7 @@ export const CardImageBox = styled(Box)(({ theme }) => ({
   margin: "0 auto",
   display: "flex",
   justifyContent: "center",
+  position: 'relative'
 }));
 
 export const CardImage = styled(Image)(({ theme }) => ({
@@ -82,7 +83,8 @@ export const CardPricingSection = styled(Stack)(({theme})=>({
     justifyContent: 'space-between',
     alignItems: 'center',
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    
 
 }))
 

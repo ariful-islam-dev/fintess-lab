@@ -28,6 +28,7 @@ export const theme = createTheme({
   },
   font: {
     interRegular14: `400 14px 'Inter', sans-serif`,
+    interMedium13: `500 13px 'Inter', sans-serif`,
     interMedium14: `500 14px 'Inter', sans-serif`,
     interMedium16: `500 16px 'Inter', sans-serif`,
     interMedium18: `500 18px 'Inter', sans-serif`,

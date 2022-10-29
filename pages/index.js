@@ -39,6 +39,11 @@ export default function Home() {
             <CardImageBox>
               <CardImage src={cardImg.src} alt="Card Image"  width={500}
       height={500} fill />
+      <ButtonMaster sx={{
+        position: 'absolute',
+        top: '10px',
+        left: '10px'
+      }} off >10% Off</ButtonMaster>
             </CardImageBox>
             <CardContent>
               <CardTitle variant={"h4"}>T-Shirt</CardTitle>
