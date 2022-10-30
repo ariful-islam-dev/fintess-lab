@@ -4,18 +4,12 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Container, Stack } from "@mui/system";
 import { Button, Typography } from "@mui/material";
+import { Box1, Heading3 } from "../../components/Styles/reusable";
 
 export default function Shipping() {
   return (
-    <Box sx={{ padding: "24px" }}>
-      <Typography
-        marginBottom
-        sx={{ paddingBottom: "10px", borderBottom: "1px solid #F3F4F6" }}
-        variant="h5"
-        color="gray.700"
-      >
-        Shipping
-      </Typography>
+    <Box1>
+      <Heading3 border>Shipping</Heading3>
 
       <Typography variant="subtitle1">Shipping address</Typography>
       <Typography variant="subtitle1">Akib Ahmad</Typography>
@@ -32,6 +26,6 @@ export default function Shipping() {
           Add new address
         </Button>
       </Stack>
-    </Box>
+    </Box1>
   );
 }

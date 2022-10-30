@@ -2,23 +2,12 @@ import { FileUpload } from "@mui/icons-material";
 import { Box, TextField, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import React from "react";
+import { Box1, Heading3 } from "../../../components/Styles/reusable";
 
 export default function AccountInformation() {
   return (
-    <Box sx={{ background: "#fff", padding: "24px", marginBottom: "24px" }}>
-      <Typography
-        color="primary"
-        marginBottom
-        sx={{
-          paddingBottom: "10px",
-          borderBottom: "1px solid #F3F4F6",
-          fontFamily: "Barlow Condensed",
-          fontWeight: "600",
-        }}
-        variant="h5"
-      >
-        Account information
-      </Typography>
+    <Box1>
+      <Heading3 border>Account information</Heading3>
       <Stack rowGap={3}>
         <Stack direction="row" spacing={3}>
           <FileUpload></FileUpload>
@@ -72,6 +61,6 @@ export default function AccountInformation() {
           />
         </Stack>
       </Stack>
-    </Box>
+    </Box1>
   );
 }

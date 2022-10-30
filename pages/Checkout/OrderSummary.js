@@ -2,25 +2,15 @@ import React from "react";
 import { styled } from "@mui/material/styles";
 import { Button, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
-import { ButtonMaster } from "../../components/Styles/Pages";
-
+import { Box1, ButtonMaster, Heading3 } from "../../components/Styles/reusable";
+import { theme } from "../../components/Styles";
 
 export default function OrderSummary() {
   return (
-    <Box sx={{ padding: "24px" }}>
-      <Typography
-        color="primary"
-        marginBottom
-        sx={{
-          paddingBottom: "10px",
-          borderBottom: "1px solid #F3F4F6",
-          fontFamily: "Barlow Condensed",
-          fontWeight: "600",
-        }}
-        variant="h5"
-      >
+    <Box1>
+      <Heading3 border variant="h3">
         Order summary
-      </Typography>
+      </Heading3>
 
       <Stack direction="row" justifyContent="space-between">
         <Typography variant="body2">Subtotal</Typography>
@@ -28,18 +18,13 @@ export default function OrderSummary() {
       </Stack>
       <Stack direction="row" justifyContent="space-between">
         <Typography variant="body2">Shipping</Typography>
-        <Typography
-          variant="body1"
-          sx={{ paddingBottom: "10px", borderBottom: "1px solid #F3F4F6" }}
-        >
-          $20
-        </Typography>
+        <Heading3>$20</Heading3>
       </Stack>
       <Stack direction="row" justifyContent="space-between">
         <Typography variant="body2">Total</Typography>
         <Typography variant="body1">$538.20</Typography>
       </Stack>
       <ButtonMaster fullWidth>Complete checkout</ButtonMaster>
-    </Box>
+    </Box1>
   );
 }

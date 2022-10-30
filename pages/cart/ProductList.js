@@ -3,19 +3,13 @@ import { Container, Stack } from "@mui/system";
 import React from "react";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import { Box1, Heading3 } from "../../components/Styles/reusable";
 
 export default function ProductList() {
   return (
-    <Box sx={{ background: "#fff", padding: "24px", marginBottom: "24px" }}>
-      <Typography
-        marginBottom
-        sx={{ paddingBottom: "10px", borderBottom: "1px solid #F3F4F6" }}
-        variant="h5"
-        color="gray.700"
-      >
-        Shipping
-      </Typography>
-      <Grid container spacing={2} sx={{ marginBottom: "24px" }}>
+    <Box1>
+      <Heading3 border>Shipping</Heading3>
+      <Grid container spacing={2}>
         <Grid item xs={7} display="flex">
           <img
             width="30%"
@@ -105,6 +99,6 @@ export default function ProductList() {
           </Grid>
         </Grid>
       </Grid>
-    </Box>
+    </Box1>
   );
 }

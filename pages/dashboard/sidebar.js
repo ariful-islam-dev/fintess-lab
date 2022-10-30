@@ -5,10 +5,11 @@ import PersonIcon from "@mui/icons-material/Person";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import RoomIcon from "@mui/icons-material/Room";
 import Link from "next/link";
+import { Box1 } from "../../components/Styles/reusable";
 
 export default function Sidebar() {
   return (
-    <Box
+    <Box1
       item
       xs={4}
       sx={{ background: "#fff", padding: "24px", marginBottom: "24px" }}
@@ -35,6 +36,6 @@ export default function Sidebar() {
           </a>
         </Link>
       </List>
-    </Box>
+    </Box1>
   );
 }

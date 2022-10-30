@@ -4,6 +4,7 @@ import React from "react";
 import Sidebar from "../sidebar";
 import Addresses from "./Addresses";
 import { Typography } from "@mui/material";
+import { Heading3 } from "../../../components/Styles/reusable";
 
 export default function Address() {
   return (
@@ -15,19 +16,7 @@ export default function Address() {
           </Grid>
           <Grid item xs={8}>
             <Stack sx={{ padding: "24px", background: "#fff" }}>
-              <Typography
-                color="primary"
-                marginBottom
-                sx={{
-                  paddingBottom: "10px",
-                  borderBottom: "1px solid #F3F4F6",
-                  fontFamily: "Barlow Condensed",
-                  fontWeight: "600",
-                }}
-                variant="h5"
-              >
-                Manage address
-              </Typography>
+              <Heading3 border>Manage address</Heading3>
               <Addresses></Addresses>
               <Addresses></Addresses>
               <Addresses></Addresses>

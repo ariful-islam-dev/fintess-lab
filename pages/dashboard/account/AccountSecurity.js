@@ -1,23 +1,15 @@
 import { TextField, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import React from "react";
+import { Box1, Heading3 } from "../../../components/Styles/reusable";
 
 export default function AccountSecurity() {
   return (
-    <Box sx={{ background: "#fff", padding: "24px", marginTop: "24px" }}>
-      <Typography
-        color="primary"
-        marginBottom
-        sx={{
-          paddingBottom: "10px",
-          borderBottom: "1px solid #F3F4F6",
-          fontFamily: "Barlow Condensed",
-          fontWeight: "600",
-        }}
-        variant="h5"
+    <Box1 sx={{mt: 2}}>
+      <Heading3 border
       >
         Account security
-      </Typography>
+      </Heading3>
       <Stack rowGap={3}>
         <Stack direction="row" spacing={3}>
           <TextField
@@ -44,6 +36,6 @@ export default function AccountSecurity() {
           />
         </Stack>
       </Stack>
-    </Box>
+    </Box1>
   );
 }

@@ -11,23 +11,12 @@ import {
   Typography,
 } from "@mui/material";
 import { Box, Stack } from "@mui/system";
+import { Box1, Heading3 } from "../../components/Styles/reusable";
 
 export default function Payment() {
-  const Item = styled(Box)(({ theme }) => ({
-    textAlign: "left",
-    color: theme.palette.text.secondary,
-    boxShadow: "none",
-    marginTop: "20px",
-  }));
   return (
-    <Item sx={{ padding: "24px" }}>
-      <Typography
-        marginBottom
-        sx={{ paddingBottom: "10px", borderBottom: "1px solid #F3F4F6" }}
-        variant="h5"
-      >
-        Payment method
-      </Typography>
+    <Box1 sx={{ mt: 2 }}>
+      <Heading3 border>Payment method</Heading3>
       <Stack direction="row" spacing={3}>
         <FormControl
           sx={{
@@ -105,6 +94,6 @@ export default function Payment() {
           />
         </Stack>
       </Stack>
-    </Item>
+    </Box1>
   );
 }
