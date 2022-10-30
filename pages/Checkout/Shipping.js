@@ -1,24 +1,18 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Container, Stack } from "@mui/system";
 import { Button, Typography } from "@mui/material";
 
-const Item = styled(Paper)(({ theme }) => ({
-  textAlign: "left",
-  color: theme.palette.text.secondary,
-  boxShadow: "none",
-}));
-
 export default function Shipping() {
   return (
-    <Item sx={{ padding: "24px" }}>
+    <Box sx={{ padding: "24px" }}>
       <Typography
         marginBottom
         sx={{ paddingBottom: "10px", borderBottom: "1px solid #F3F4F6" }}
-        variant="h5" color="gray.700"
+        variant="h5"
+        color="gray.700"
       >
         Shipping
       </Typography>
@@ -38,6 +32,6 @@ export default function Shipping() {
           Add new address
         </Button>
       </Stack>
-    </Item>
+    </Box>
   );
 }

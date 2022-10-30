@@ -1,19 +1,13 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import { Button, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import { ButtonMaster } from "../../components/Styles/Pages";
 
-export default function OrderSummary() {
-  const Item = styled(Paper)(({ theme }) => ({
-    textAlign: "left",
-    color: theme.palette.text.secondary,
-    boxShadow: "none",
-  }));
 
+export default function OrderSummary() {
   return (
-    <Item sx={{ padding: "24px" }}>
+    <Box sx={{ padding: "24px" }}>
       <Typography
         color="primary"
         marginBottom
@@ -46,6 +40,6 @@ export default function OrderSummary() {
         <Typography variant="body1">$538.20</Typography>
       </Stack>
       <ButtonMaster fullWidth>Complete checkout</ButtonMaster>
-    </Item>
+    </Box>
   );
 }

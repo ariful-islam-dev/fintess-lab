@@ -1,6 +1,5 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import {
   Button,
   FormControl,
@@ -14,11 +13,11 @@ import {
 import { Box, Stack } from "@mui/system";
 
 export default function Payment() {
-  const Item = styled(Paper)(({ theme }) => ({
+  const Item = styled(Box)(({ theme }) => ({
     textAlign: "left",
     color: theme.palette.text.secondary,
     boxShadow: "none",
-    marginTop: "20px"
+    marginTop: "20px",
   }));
   return (
     <Item sx={{ padding: "24px" }}>

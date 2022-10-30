@@ -1,26 +1,40 @@
-import { Box, Grid, List } from "@mui/material";
+import { Box, Grid, List, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import RoomIcon from "@mui/icons-material/Room";
+import Link from "next/link";
 
 export default function Sidebar() {
   return (
-    <Grid
+    <Box
       item
       xs={4}
       sx={{ background: "#fff", padding: "24px", marginBottom: "24px" }}
     >
       <List>
-        <PersonIcon fontSize="20px" /> Account information
+        {/* <Link href="/">Home</Link> */}
+        <Link href="/dashboard/account">
+          <a>
+            <PersonIcon fontSize="20px" /> Account information
+          </a>
+        </Link>
       </List>
       <List>
-        <ReceiptIcon fontSize="20px" /> My order
+        <Link href="/dashboard/order">
+          <a>
+            <ReceiptIcon fontSize="20px" /> My order
+          </a>
+        </Link>
       </List>
       <List>
-        <RoomIcon fontSize="20px" /> Manage order
+        <Link href="/dashboard/address">
+          <a>
+            <RoomIcon fontSize="20px" /> Manage address
+          </a>
+        </Link>
       </List>
-    </Grid>
+    </Box>
   );
 }

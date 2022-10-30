@@ -1,6 +1,4 @@
-import { ListItem } from "@mui/material";
-import List from "@mui/material/List";
-import ListItemText from "@mui/material/ListItemText";
+import { List, ListItem, ListItemText } from "@mui/material";
 import * as React from "react";
 
 export default function Widget({ item }) {

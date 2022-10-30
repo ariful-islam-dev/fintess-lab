@@ -1,11 +1,11 @@
-import { Box, Grid, List } from "@mui/material";
-import { Container } from "@mui/system";
+import { Grid } from "@mui/material";
+import { Box, Container } from "@mui/system";
 import React from "react";
-import PersonIcon from "@mui/icons-material/Person";
-import Sidebar from "./sidebar";
-import Account from "./account";
+import Sidebar from "../sidebar";
+import CustomizedTables from "./Table";
+import Table from "./Table";
 
-export default function Dashboard() {
+export default function MyOrder() {
   return (
     <Box sx={{ py: 6 }}>
       <Container>
@@ -14,7 +14,7 @@ export default function Dashboard() {
             <Sidebar></Sidebar>
           </Grid>
           <Grid item xs={8}>
-            <Account></Account>
+            <CustomizedTables></CustomizedTables>
           </Grid>
         </Grid>
       </Container>
