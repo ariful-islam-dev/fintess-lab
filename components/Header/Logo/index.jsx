@@ -7,6 +7,8 @@ const Logo = ({ display }) => {
   return (
     <>
       <SiteLogo
+        component={"a"}
+        href="/"
         sx={{
           display: display,
         }}
