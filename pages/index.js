@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
@@ -33,26 +34,19 @@ export default function Home() {
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
+=======
+import { CardContent, Container, Grid } from '@mui/material';
+import Link from 'next/link';
+import cardImg from '../components/images/image 2.jpg';
+import { BannerTitle, Card, CardImage, CardImageBox, CardPrice, CardPricingSection, CardTitle, Section, SectionHeading, SectionTitle } from '../components/Styles/Home';
+import { ButtonMaster } from '../components/Styles/reusable';
+import bannerUrl from '../public/banner.jpeg';
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+>>>>>>> develop
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+export default function Home() {
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
+<<<<<<< HEAD
           <a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}
@@ -62,19 +56,59 @@ export default function Home() {
           </a>
         </div>
       </main>
+=======
+  const banner = {
+    background : `url(${bannerUrl.src})`, 
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    heigh: '300px'
+   
+}    
+  return (
+    <div style={banner} >
+     <Container>
+      <BannerTitle variant='h1' >10% Off for your first order</BannerTitle>
+      <ButtonMaster btn="secondary"   >Primary</ButtonMaster>
+      <ButtonMaster btn="light" >Primary</ButtonMaster>
+      <ButtonMaster>Buy Now</ButtonMaster>
+      <SectionHeading>
+        <SectionTitle>More For You</SectionTitle>
+        <Link href={'/shop'}>View More</Link>
+      </SectionHeading>
+>>>>>>> develop
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <Section>
+      <Container maxWidth="lg">
+      <SectionHeading>
+        <SectionTitle>More For You</SectionTitle>
+        <Link href={'/shop'}>View More</Link>
+      </SectionHeading>
+      <Grid container spacing={2}>
+        <Grid item md="3">
+          <Card>
+            <CardImageBox>
+              <CardImage src={cardImg.src} alt="Card Image"  width={500}
+      height={500} fill />
+      <ButtonMaster sx={{
+        position: 'absolute',
+        top: '10px',
+        left: '10px'
+      }} off >10% Off</ButtonMaster>
+            </CardImageBox>
+            <CardContent>
+              <CardTitle variant={"h4"}>T-Shirt</CardTitle>
+              <CardPricingSection>
+                <CardPrice>$25.00</CardPrice>
+                <ButtonMaster btn="light">+</ButtonMaster>
+              </CardPricingSection>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+      </Container>
+      </Section>
+      
+     </Container>
     </div>
   );
 }
