@@ -1,12 +1,14 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import { Box, IconButton, Menu } from "@mui/material";
+import { useStoreState } from "easy-peasy";
 import React from "react";
 import useHeader from "../../../hooks/useHeader";
 import Dropdown from "./Dropdown";
 
 const Mobile = () => {
   const { handleOpenNavMenu, anchorElNav, handleCloseNavMenu } = useHeader();
-  const pages = ["Men", "Women", "Exercise", "Accessories"];
+  const storeMenu = useStoreState((state) => state.menu);
+
   return (
     <>
       <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -38,7 +40,7 @@ const Mobile = () => {
             display: { xs: "block", md: "none" },
           }}
         >
-          {pages.map((page) => (
+          {Object.keys(storeMenu).map((page) => (
             <Dropdown key={page}>{page}</Dropdown>
           ))}
         </Menu>

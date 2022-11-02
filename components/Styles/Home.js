@@ -4,10 +4,7 @@ import Image from "next/image";
 
 export const BannerTitle = styled(Typography)(({ theme }) => ({
   // color: theme.secondary.gray50,
-  fontFamily: theme.fontName?.barlow,
-  fontWeight: "700",
-  fontSize: "68px",
-  lineHeight: "82px",
+  font: theme.font?.barlowSemiBold82,
   display: "flex",
   alignItems: "center",
   textTransform: "uppercase",
@@ -16,8 +13,7 @@ export const BannerTitle = styled(Typography)(({ theme }) => ({
 
 export const Section = styled("section")(({ theme }) => ({
   width: "100%",
-  height: "auto",
-  background: "transparent",
+  padding: '20px 0',
 }));
 
 export const SectionHeading = styled(Box)(({ theme }) => ({
@@ -92,7 +88,7 @@ export const CardPrice = styled(Stack)(({theme})=>({
     justifyContent: 'flex-start',
     alignItems: 'flex-end',
     color: theme.palette.primary.main,
-    font: theme.font?.interMedium18
+    font: theme.font?.interMedium16
 }))
 
 
