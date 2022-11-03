@@ -1,6 +1,8 @@
+import { gql } from "@apollo/client";
 import { CardContent, Container, Grid } from "@mui/material";
 import { useStoreActions } from 'easy-peasy';
 import Link from "next/link";
+import client from "../components/apollo/client";
 import cardImg from "../components/images/image 2.jpg";
 import {
   BannerTitle,
@@ -35,7 +37,7 @@ import bannerUrl from "../public/banner.jpeg";
 //   }
 // `;
 
-export default function Home() {
+export default function Home({data}) {
   const banner = {
     background: `url(${bannerUrl.src})`,
     backgroundSize: "cover",
@@ -44,6 +46,8 @@ export default function Home() {
   };
 
   const addMenuFromDatabase = useStoreActions(state=>state.addMenuFromDatabase)
+
+  console.log(data.products)
 
 
   
@@ -122,4 +126,40 @@ export default function Home() {
       </Section>
     </>
   );
+}
+
+export const getStaticProps= async()=> {
+  const { data } = await client.query({
+    query: gql`
+      query getProducts  {
+        products{
+          data{
+            id,
+            attributes{
+              title, 
+              price,
+              discount_price,
+             
+             thumbnails{
+              data{
+                id,
+                attributes{
+                  url
+                }
+              }
+             }
+            }
+          }
+        }
+      }
+    `,
+  });
+ 
+  // const {data, error, loading } =  useQuery(GET_PRODUCT);
+  // if(loading) return loading
+  // if(error) return error.message
+  
+  return{
+   props: {data}
+  }
 }
