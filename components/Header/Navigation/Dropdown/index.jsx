@@ -49,15 +49,6 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-const dropMenus = [
-  "Compression Gear",
-  "Workout Gloves",
-  "Knee Support",
-  "Elbow Support",
-  "T-Shirt",
-  "Head Ware",
-];
-
 export default function Dropdown({ children }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [dropdown, setDropdown] = React.useState([]);

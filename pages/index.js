@@ -3,7 +3,6 @@ import { CardContent, Container, Grid } from "@mui/material";
 import { useStoreActions } from 'easy-peasy';
 import Link from "next/link";
 import client from "../components/apollo/client";
-import cardImg from "../components/images/image 2.jpg";
 import {
   BannerTitle,
   Card,
@@ -18,6 +17,7 @@ import {
 } from "../components/Styles/Home";
 import { ButtonMaster, Heading3 } from "../components/Styles/reusable";
 import bannerUrl from "../public/banner.jpeg";
+import cardImg from "../public/images/image 2.jpg";
 
 
 
@@ -47,7 +47,7 @@ export default function Home({data}) {
 
   const addMenuFromDatabase = useStoreActions(state=>state.addMenuFromDatabase)
 
-  console.log(data.products)
+
 
 
   

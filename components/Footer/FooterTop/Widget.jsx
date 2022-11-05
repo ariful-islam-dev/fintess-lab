@@ -1,7 +1,7 @@
 import { ListItem } from "@mui/material";
 import List from "@mui/material/List";
-import ListItemText from "@mui/material/ListItemText";
 import * as React from "react";
+import { Anchor } from "../../Styles/Footer";
 
 export default function Widget({ item }) {
   const [open, setOpen] = React.useState(true);
@@ -16,8 +16,10 @@ export default function Widget({ item }) {
       aria-labelledby="nested-list-subheader"
     >
       {Object.values(item)[0].map((list) => (
-        <ListItem disablePadding key={list.name}>
-          <ListItemText primary={list.name} />
+        <ListItem key={list.name} sx={{ padding: " 0" }}>
+          <Anchor href={list.path} component={"a"} passHref>
+            {list.name}
+          </Anchor>
         </ListItem>
       ))}
     </List>

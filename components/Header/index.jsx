@@ -4,6 +4,8 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import { useStoreActions } from "easy-peasy";
 import * as React from "react";
+import { useEffect, useState } from "react";
+import { ButtonMaster } from "../Styles/reusable";
 import AvatarIcon from "./Avatar";
 import CardHeader from "./Card";
 import Logo from "./Logo";
@@ -13,6 +15,7 @@ import SearchBar from "./SearchBar";
 
 function Header() {
   const addMenu = useStoreActions((state) => state.addMenu);
+  const [user, setUser] = useState({});
 
   const GET_CATEGORY = gql`
     query getCategories {
@@ -31,6 +34,10 @@ function Header() {
   if (data) {
     addMenu(data.categories.data);
   }
+  useEffect(() => {
+    const newUser = localStorage.getItem("user");
+    setUser(newUser);
+  }, [user]);
 
   return (
     <AppBar position="static" color={"inherit"}>
@@ -51,7 +58,18 @@ function Header() {
 
             <SearchBar in />
             <CardHeader />
-            <AvatarIcon />
+            {user ? (
+              <AvatarIcon />
+            ) : (
+              <ButtonMaster
+                btn="secondary"
+                component="a"
+                href="/auth"
+                sx={{ padding: 1, fontSize: { xs: "14px", md: "16px" } }}
+              >
+                Login
+              </ButtonMaster>
+            )}
           </Toolbar>
         )}
         <SearchBar out />
