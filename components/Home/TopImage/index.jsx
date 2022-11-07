@@ -4,21 +4,14 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
-import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
 import Button from '@mui/material/Button';
-import { purple, red } from '@mui/material/colors';
-import data from '../../utils/data';
-const primary = red[200]; // #f44336
-import img4 from '../../public/images/image4.jpg';
-import img5 from '../../public/images/image5.jpg';
-import { TopItem } from '../../components/Styles/Home';
+import img4 from '../../../public/images/image4.jpg';
+import img5 from '../../../public/images/image5.jpg';
+import { ImageTitle, TopItem } from '../../Styles/Home';
+import { ButtonMaster } from '../../Styles/reusable';
 
-const MidSection = () => {
+const TopImage = () => {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -54,24 +47,34 @@ const MidSection = () => {
   };
   // console.log('hello', img4);
   return (
-    <Container sx={{}}>
+    <Container sx={{ my: 10 }}>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={{ md: 4, xs: 2 }}>
-          <Grid item xs={7} md={7} sx={{}}>
+          <Grid item xs={12} md={7} sx={{}}>
             <TopItem sx={{ ...midBanner1 }}>
+              <ButtonMaster
+                sx={{
+                  position: 'absolute',
+                  top: '9%',
+                  left: '12%',
+                }}
+                discount
+              >
+                10% Off
+              </ButtonMaster>
               <Box>
-                <Typography sx={{ color: 'white' }} variant='h3'>
+                <ImageTitle sx={{ color: 'white' }} variant='h3'>
                   HOME GYM BENCH
-                </Typography>
+                </ImageTitle>
                 <Typography sx={{ color: 'white' }}>
                   Fitness world a reliable & compatible source of sports &
                   fitness equipment’s company
                 </Typography>
-                <Button variant='contained'>BUY NOW</Button>
+                <ButtonMaster white>BUY NOW</ButtonMaster>
               </Box>
             </TopItem>
           </Grid>
-          <Grid item xs={5} md={5}>
+          <Grid item xs={12} md={5}>
             <Item sx={midBanner2}></Item>
           </Grid>
         </Grid>
@@ -80,4 +83,4 @@ const MidSection = () => {
   );
 };
 
-export default MidSection;
+export default TopImage;

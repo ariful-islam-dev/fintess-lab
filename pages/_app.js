@@ -8,11 +8,11 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   return <ThemeProvider theme={theme}>
-  <CssBaseline/>
-    <Header/>
+    <CssBaseline />
+    <Header />
     <Component {...pageProps} />
-    <Footer/>
-  </ThemeProvider>
+    <Footer />
+  </ThemeProvider>;
 }
 
-export default MyApp
+export default MyApp;

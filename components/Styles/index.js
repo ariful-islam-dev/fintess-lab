@@ -4,9 +4,10 @@ import { gray } from "./color";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#C23A55",
-      dark: "#D23F57",
+      dark: "#C23A55",
+      main: "#D23F57 ",
       light: "#FAE4E9",
+      custom: ' #1F2937'
     },
     secondary: {
       gray900: gray[900],
@@ -23,7 +24,7 @@ export const theme = createTheme({
   },
 
   fontName: {
-    barlow: "'Barlow Condensed', sans-serif",
+    barlow: "Barlow Condensed, sans-serif",
     inter: "'Inter', sans-serif;",
   },
   font: {

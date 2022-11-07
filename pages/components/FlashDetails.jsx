@@ -42,13 +42,17 @@ const FlashDetails = () => {
         </Typography>
       </Box>
 
-      <Box sx={{}}>
-        <Grid container spacing={4}>
+      <Box>
+        <Grid
+          container
+          spacing={4}
+          // sx={{ display: 'flex', justifyContent: 'center' }}
+        >
           {data.products.slice(0, 4).map((product) => (
-            <Grid item xs={6} md={3} key={product.name}>
+            <Grid item xs={12} md={3} sm={3} key={product.name}>
               <Card
                 sx={{
-                  maxWidth: 345,
+                  maxWidth: 700,
                   boxShadow: '0px 2px 7px rgba(51, 65, 85, 0.08)',
                 }}
               >
