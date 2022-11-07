@@ -22,20 +22,7 @@ import cardImg from "../public/images/image 2.jpg";
 
 
 
-//Apollo Data
-// const GET_CATEGORY = gql`
-//   query getCategories {
-//     categories {
-//     data{
-//       id,
-//       attributes{
-//         Name,
-//         Type
-//       }
-//     }
-//     }
-//   }
-// `;
+
 
 export default function Home({data}) {
   const banner = {
@@ -49,19 +36,11 @@ export default function Home({data}) {
 
 
 
-
-  
-
-  // const { loading, error, data } = useQuery(GET_CATEGORY);
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error :(</p>;
-  // console.log(data.categories.data)
-
   return (
     <>
       <div style={banner}>
         <Container>
-          <BannerTitle variant="h1" sx={{fontSize: {xs: '40px', md: '82px'}}}>10% Off for your first order</BannerTitle>
+          <BannerTitle variant="h1" sx={{fontSize: {xs: 40, md: 82}}}>10% Off for your first order</BannerTitle>
           <ButtonMaster btn="secondary">Primary</ButtonMaster>
           <ButtonMaster btn="light">Primary</ButtonMaster>
           <ButtonMaster>Buy Now</ButtonMaster>

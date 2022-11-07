@@ -1,15 +1,15 @@
 import { Container } from "@mui/material";
 import React, { useState } from "react";
-import Authentication from "../../components/Authentication/Login";
+import Authentication from "../../components/Authentication";
 
 const Auth = () => {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   const handleLogin = () => {
     setLogin(!login);
   };
   return (
     <Container>
-      <Authentication login={login} handleLogin={handleLogin} />
+      <Authentication UserLogin={login} handleLogin={handleLogin} />
     </Container>
   );
 };

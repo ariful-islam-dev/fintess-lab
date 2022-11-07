@@ -50,3 +50,10 @@ border: `1px solid ${theme.palette.secondary.gray200}`,
 borderRadius: '8px',
 
 }))
+
+export const ErrorMessage = styled(Typography)(({theme})=>({
+    font: theme.font.interMedium14,
+lineHeight: '14px',
+color: theme.palette.primary.dark,
+width: '100%',
+}))

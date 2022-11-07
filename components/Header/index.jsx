@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import { useStoreActions } from "easy-peasy";
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ButtonMaster } from "../Styles/reusable";
 import AvatarIcon from "./Avatar";
 import CardHeader from "./Card";
@@ -34,44 +34,43 @@ function Header() {
   if (data) {
     addMenu(data.categories.data);
   }
-  useEffect(() => {
-    const newUser = localStorage.getItem("user");
+  React.useEffect(() => {
+    const user = localStorage.getItem("user");
+    const newUser = JSON.parse(user);
     setUser(newUser);
   }, [user]);
 
   return (
     <AppBar position="static" color={"inherit"}>
       <Container maxWidth="lg">
-        {loading && <h1>Loading</h1>}
-        {error && <h1>error {error.message}</h1>}
-        {data && (
-          <Toolbar disableGutters>
-            {/* Mobile Menu */}
+        <Toolbar disableGutters>
+          {/* Mobile Menu */}
 
-            <Logo display={{ xs: "none", md: "flex" }} />
-            <Mobile />
+          <Logo display={{ xs: "none", md: "flex" }} />
+          {loading && <h1>Loading</h1>}
+          {error && <h1>error {error.message}</h1>}
+          {data && <Mobile />}
+          {/* Desktop Menu */}
 
-            {/* Desktop Menu */}
-
-            <Logo display={{ xs: "flex", md: "none" }} />
-            <Desktop />
-
-            <SearchBar in />
-            <CardHeader />
-            {user ? (
-              <AvatarIcon />
-            ) : (
-              <ButtonMaster
-                btn="secondary"
-                component="a"
-                href="/auth"
-                sx={{ padding: 1, fontSize: { xs: "14px", md: "16px" } }}
-              >
-                Login
-              </ButtonMaster>
-            )}
-          </Toolbar>
-        )}
+          <Logo display={{ xs: "flex", md: "none" }} />
+          {loading && <h1>Loading</h1>}
+          {error && <h1>error {error.message}</h1>}
+          {data && <Desktop />}
+          <SearchBar in />
+          <CardHeader />
+          {user ? (
+            <AvatarIcon user={user} />
+          ) : (
+            <ButtonMaster
+              btn="secondary"
+              component="a"
+              href="/login"
+              sx={{ padding: 1, fontSize: { xs: "14px", md: "16px" } }}
+            >
+              Login
+            </ButtonMaster>
+          )}
+        </Toolbar>
         <SearchBar out />
       </Container>
     </AppBar>

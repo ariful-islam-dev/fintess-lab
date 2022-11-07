@@ -2,15 +2,17 @@ import { Button, Typography } from "@mui/material";
 
 import { styled } from "@mui/material/styles";
 
-export const ButtonMaster = styled(Button)(({ theme, btn, off }) => ({
+export const ButtonMaster = styled(Button)(({ theme, btn, off, disabled }) => ({
   color: `${
     (btn === "secondary" && theme?.palette?.secondary?.main) ||
     (btn === "light" && theme.palette?.primary?.main) ||
+    (disabled && theme.palette?.primary?.light) ||
     (theme.palette?.secondary?.gray50)
   }`,
   background: `${
     (btn === "secondary" && theme?.palette?.secondary?.gray50) ||
     (btn === "light" && theme.palette?.primary.light) ||
+    (disabled && theme.palette?.secondary.gray400) ||
     (theme.palette?.primary.main)
   }`,
   display: "flex",

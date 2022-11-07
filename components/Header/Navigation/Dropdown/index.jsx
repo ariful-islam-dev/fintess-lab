@@ -74,7 +74,7 @@ export default function Dropdown({ children }) {
     if (children === "exercise") {
       setDropdown(menu.exercise);
     }
-  }, [dropdown, menu]);
+  }, [dropdown, children, menu]);
 
   return (
     <div>
