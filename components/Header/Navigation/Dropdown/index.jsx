@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
+import { useStoreState } from "easy-peasy";
 import * as React from "react";
 
 const StyledMenu = styled((props) => (
@@ -48,24 +49,32 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-const dropMenus = [
-  "Compression Gear",
-  "Workout Gloves",
-  "Knee Support",
-  "Elbow Support",
-  "T-Shirt",
-  "Head Ware",
-];
-
 export default function Dropdown({ children }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [dropdown, setDropdown] = React.useState([]);
   const open = Boolean(anchorEl);
+  const menu = useStoreState((state) => state.menu);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  React.useEffect(() => {
+    if (children === "men") {
+      setDropdown(menu.men);
+    }
+    if (children === "women") {
+      setDropdown(menu.women);
+    }
+    if (children === "accessories") {
+      setDropdown(menu.accessories);
+    }
+    if (children === "exercise") {
+      setDropdown(menu.exercise);
+    }
+  }, [dropdown, children, menu]);
 
   return (
     <div>
@@ -90,7 +99,7 @@ export default function Dropdown({ children }) {
         open={open}
         onClose={handleClose}
       >
-        {dropMenus.map((item) => (
+        {dropdown.map((item) => (
           <MenuItem onClick={handleClose} disableRipple key={item}>
             {item}
           </MenuItem>

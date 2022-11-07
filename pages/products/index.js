@@ -1,3 +1,4 @@
+
 import { gql } from '@apollo/client';
 import client from '../../components/Apollo/client';
 import AboutProduct from '../../components/ProductDetails/AboutProduct';
@@ -12,32 +13,44 @@ export default function Products({ data }) {
   );
 }
 
-export const getStaticProps = async () => {
-  const { data } = await client.query({
-    query: gql`
-      query getProducts {
-        products {
-          data {
-            id
-            attributes {
-              title
-              price
-              discount_price
 
-              thumbnails {
-                data {
-                  id
-                  attributes {
-                    url
-                  }
+
+
+
+
+export const getStaticProps= async()=> { 
+  const { data } = await client.query({ 
+    query: gql`
+      query getProducts  {
+        products{
+          data{
+            id,
+            attributes{
+              title, 
+              price,
+              discount_price,
+             
+             thumbnails{
+              data{
+                id,
+                attributes{
+                  url
                 }
               }
+             }
+            }
+          },
+          meta{
+            pagination{
+              page,pageSize,pageCount,total
+
             }
           }
         }
       }
     `,
   });
+
 
   // const {data, error, loading } =  useQuery(GET_PRODUCT);
   // if(loading) return loading
@@ -47,3 +60,14 @@ export const getStaticProps = async () => {
     props: { data },
   };
 };
+
+ 
+  
+  return{
+   props: {data}
+  }
+}
+
+
+export default Products;
+

@@ -10,15 +10,15 @@ import {
 import React from "react";
 import useHeader from "../../../hooks/useHeader";
 
-const AvatarIcon = () => {
+const AvatarIcon = ({ user }) => {
   const { handleCloseUserMenu, handleOpenUserMenu, anchorElUser } = useHeader();
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
   return (
     <>
       <Box sx={{ flexGrow: 0 }}>
-        <Tooltip title="Open settings">
+        <Tooltip title={user.username}>
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+            <Avatar alt={user.username} src="/static/images/avatar/2.jpg" />
           </IconButton>
         </Tooltip>
         <Menu

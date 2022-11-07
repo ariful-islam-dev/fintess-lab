@@ -1,13 +1,4 @@
-// import Head from 'next/head';
-// import Image from 'next/image';
-// import styles from '../styles/Home.module.css';
-// import FlashDetails from './components/FlashDetails';
-// import Header from './components/Header';
-// import HomePage from './components/HomePage';
-// import MidSection from './components/MidSection';
-// import TopProducts from './components/TopProducts';
 
-// import Final from './components/Final';
 import { gql } from '@apollo/client';
 import { Box, CardContent, Container, Grid } from '@mui/material';
 import Link from 'next/link';
@@ -15,7 +6,7 @@ import client from '../components/Apollo/client';
 import Exercise from '../components/Exercise/Exercise';
 import Banner from '../components/Home/Banner';
 import FlashDeals from '../components/Home/FlashDeals';
-// import FlashDeals from '../components/Home/FlashDeals';
+
 
 import TopImage from '../components/Home/TopImage';
 import TopProducts from '../components/Home/TopProducts';
@@ -30,16 +21,29 @@ import MidSection from './components/MidSection';
 
 
 
-// export default function Home() {
-//   return (
-//     <div className={styles.container}>
-//       <Header></Header>
-//       <HomePage></HomePage>
-//       <FlashDetails></FlashDetails>
-//       <TopProducts></TopProducts>
-//       <MidSection></MidSection>
-//       <Final></Final>
-//       {/* <Container></Container> */}
+
+import { gql } from "@apollo/client";
+import { CardContent, Container, Grid } from "@mui/material";
+import { useStoreActions } from 'easy-peasy';
+import Link from "next/link";
+import client from "../components/apollo/client";
+import {
+  BannerTitle,
+  Card,
+  CardImage,
+  CardImageBox,
+  CardPrice,
+  CardPricingSection,
+  CardTitle,
+  Section,
+  SectionHeading,
+  SectionTitle
+} from "../components/Styles/Home";
+import { ButtonMaster, Heading3 } from "../components/Styles/reusable";
+import bannerUrl from "../public/banner.jpeg";
+import cardImg from "../public/images/image 2.jpg";
+
+
 
 
 
@@ -63,6 +67,94 @@ export default function Home({ data }) {
 ########################################################
 */
 export const getStaticProps = async () => {
+
+
+
+export default function Home({data}) {
+  const banner = {
+    background: `url(${bannerUrl.src})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    heigh: "300px",
+  };
+
+  const addMenuFromDatabase = useStoreActions(state=>state.addMenuFromDatabase)
+
+
+
+  return (
+    <>
+      <div style={banner}>
+        <Container>
+          <BannerTitle variant="h1" sx={{fontSize: {xs: 40, md: 82}}}>10% Off for your first order</BannerTitle>
+          <ButtonMaster btn="secondary">Primary</ButtonMaster>
+          <ButtonMaster btn="light">Primary</ButtonMaster>
+          <ButtonMaster>Buy Now</ButtonMaster>
+        </Container>
+      </div>
+     <Section>
+    <Container maxWidth="lg">
+    <SectionHeading>
+        <SectionTitle>More For You</SectionTitle>
+        <Link href={"/shop"} passHref>
+          View More
+        </Link>
+      </SectionHeading>
+      
+    </Container>
+     </Section>
+
+      <Section>
+        <Container maxWidth="lg">
+          <SectionHeading>
+            <SectionTitle>More For You</SectionTitle>
+            <Link href={"/shop"}>View More</Link>
+          </SectionHeading>
+          <Grid container spacing={2}>
+            <Grid item md="3">
+              <Card>
+                <CardImageBox>
+                  <CardImage
+                    src={cardImg.src}
+                    alt="Card Image"
+                    width={500}
+                    height={500}
+                    fill
+                  />
+                  <ButtonMaster
+                    sx={{
+                      position: "absolute",
+                      top: "10px",
+                      left: "10px",
+                    }}
+                    off
+                  >
+                    10% Off
+                  </ButtonMaster>
+                </CardImageBox>
+                <CardContent>
+                  <CardTitle variant={"h4"}>T-Shirt</CardTitle>
+                  <CardPricingSection>
+                    <CardPrice>$25.00</CardPrice>
+                    <ButtonMaster btn="light">+</ButtonMaster>
+                  </CardPricingSection>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </Container>
+      </Section>
+      <Section>
+        <Container>
+          <Heading3 variant="h3">My Cart 2</Heading3>
+        </Container>
+      </Section>
+    </>
+  );
+}
+
+export const getStaticProps= async()=> {
+
   const { data } = await client.query({
     query: gql`
       query getProducts  {
@@ -89,6 +181,7 @@ export const getStaticProps = async () => {
     `,
   });
 
+
   // const {data, error, loading } =  useQuery(GET_PRODUCT);
   // if(loading) return loading
   // if(error) return error.message
@@ -97,3 +190,14 @@ export const getStaticProps = async () => {
     props: { data }
   };
 };
+
+ 
+  // const {data, error, loading } =  useQuery(GET_PRODUCT);
+  // if(loading) return loading
+  // if(error) return error.message
+  
+  return{
+   props: {data}
+  }
+}
+

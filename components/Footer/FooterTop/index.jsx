@@ -1,5 +1,6 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
+import { FootHeading } from "../../Styles/Footer";
 import Widget from "./Widget";
 
 const footComHeading = [
@@ -72,13 +73,13 @@ const footComHeading = [
 
 const FooterTop = () => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} sx={{ paddingBottom: "80px" }}>
       {footComHeading.map((item) => {
         return (
-          <Grid key={item} item lg={3}>
-            <Typography container="h6" variant="h6">
+          <Grid key={item} item md={3} lg={3} xs={12} sm={6}>
+            <FootHeading variant="title" component="h6">
               {item === item.toString() ? item : Object.keys(item)}
-            </Typography>
+            </FootHeading>
             {item !== item.toString() && <Widget item={item} />}
           </Grid>
         );
