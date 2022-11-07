@@ -1,14 +1,22 @@
-import { gql } from "@apollo/client";
-import React from "react";
-import client from "../../components/apollo/client";
 
-const Products = () => {
+import { gql } from '@apollo/client';
+import client from '../../components/Apollo/client';
+import AboutProduct from '../../components/ProductDetails/AboutProduct';
+import Shop from '../../components/Shop';
+
+export default function Products({ data }) {
   return (
     <div>
-      <h1>This is product page</h1>
+      <h1>This is product</h1>
+      <Shop data={data}></Shop>
     </div>
   );
-};
+}
+
+
+
+
+
 
 export const getStaticProps= async()=> { 
   const { data } = await client.query({ 
@@ -35,12 +43,24 @@ export const getStaticProps= async()=> {
           meta{
             pagination{
               page,pageSize,pageCount,total
+
             }
           }
         }
       }
     `,
   });
+
+
+  // const {data, error, loading } =  useQuery(GET_PRODUCT);
+  // if(loading) return loading
+  // if(error) return error.message
+
+  return {
+    props: { data },
+  };
+};
+
  
   
   return{
@@ -50,3 +70,4 @@ export const getStaticProps= async()=> {
 
 
 export default Products;
+

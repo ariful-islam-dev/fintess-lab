@@ -10,18 +10,24 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.1",
+
     "@apollo/react-hooks": "^4.0.0",
+
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@hookform/resolvers": "^2.9.10",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.10",
     "@mui/styled-engine-sc": "^5.10.6",
+
+    "graphql": "^16.6.0",
+
     "easy-peasy": "^5.1.0",
     "fs": "^0.0.1-security",
     "fs-extra": "^10.1.0",
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
+
     "next": "12.3.1",
     "path": "^0.12.7",
     "react": "18.2.0",

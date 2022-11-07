@@ -1,3 +1,27 @@
+
+import { gql } from '@apollo/client';
+import { Box, CardContent, Container, Grid } from '@mui/material';
+import Link from 'next/link';
+import client from '../components/Apollo/client';
+import Exercise from '../components/Exercise/Exercise';
+import Banner from '../components/Home/Banner';
+import FlashDeals from '../components/Home/FlashDeals';
+
+
+import TopImage from '../components/Home/TopImage';
+import TopProducts from '../components/Home/TopProducts';
+import cardImg from '../components/images/image 2.jpg';
+import { BannerTitle, Card, CardImage, CardImageBox, CardPrice, CardPricingSection, CardTitle, Section, SectionHeading, SectionTitle } from '../components/Styles/Home';
+import { ButtonMaster } from '../components/Styles/reusable';
+
+
+import bannerUrl from '../public/banner.jpeg';
+import FlashDetails from './components/FlashDetails';
+import MidSection from './components/MidSection';
+
+
+
+
 import { gql } from "@apollo/client";
 import { CardContent, Container, Grid } from "@mui/material";
 import { useStoreActions } from 'easy-peasy';
@@ -21,6 +45,28 @@ import cardImg from "../public/images/image 2.jpg";
 
 
 
+
+
+
+export default function Home({ data }) {
+
+
+  return (
+    <div>
+      <Banner></Banner>
+      <FlashDeals data={data}></FlashDeals>
+      <TopProducts></TopProducts>
+      <TopImage></TopImage>
+    </div>
+  );
+}
+
+/* 
+
+########################################################
+########################################################
+*/
+export const getStaticProps = async () => {
 
 
 
@@ -108,6 +154,7 @@ export default function Home({data}) {
 }
 
 export const getStaticProps= async()=> {
+
   const { data } = await client.query({
     query: gql`
       query getProducts  {
@@ -133,6 +180,17 @@ export const getStaticProps= async()=> {
       }
     `,
   });
+
+
+  // const {data, error, loading } =  useQuery(GET_PRODUCT);
+  // if(loading) return loading
+  // if(error) return error.message
+
+  return {
+    props: { data }
+  };
+};
+
  
   // const {data, error, loading } =  useQuery(GET_PRODUCT);
   // if(loading) return loading
@@ -142,3 +200,4 @@ export const getStaticProps= async()=> {
    props: {data}
   }
 }
+

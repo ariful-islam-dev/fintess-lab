@@ -11,6 +11,7 @@ import { theme } from "../components/Styles";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
+
   const queryClient = new QueryClient()
   return (
     <ApolloProvider client={client}>
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps }) {
       </QueryClientProvider>
     </ApolloProvider>
   );
+
 }
 
 export default MyApp;

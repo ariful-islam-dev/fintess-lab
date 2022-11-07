@@ -1,3 +1,28 @@
+
+import { gql } from "@apollo/client";
+import client from "../../components/Apollo/client";
+import ProductDetails from "../../components/ProductDetails/AboutProduct";
+import AboutProduct from "../../components/ProductDetails/AboutProduct";
+
+export default function Post({ data }) {
+	return (
+		<div>
+			<ProductDetails data={data}></ProductDetails>
+		</div>
+	);
+};
+
+
+/* 
+
+########################################################
+########################################################
+*/
+
+export async function getStaticPaths() {
+	const { data } = await client.query({
+		query: gql`
+
 import { gql } from '@apollo/client';
 import React from 'react';
 import client from '../../components/apollo/client';
@@ -16,6 +41,7 @@ const Product = ({product}) => {
 export async function getStaticPaths() { 
     const { data } = await client.query({ 
         query: gql`
+
           query getProducts  {
             products(pagination:{page:1, pageSize: 50}){
               data{
@@ -24,6 +50,27 @@ export async function getStaticPaths() {
             }
           }
         `,
+
+	});
+
+	const productsId = data.products.data;
+	const paths = productsId.map((product) => {
+
+		console.log('PRODUCT IS', product);
+		return ({
+			params: { id: product.id },
+		});
+	});
+	return { paths, fallback: false };
+}
+
+
+
+
+export const getStaticProps = async ({ params }) => {
+	const { data } = await client.query({
+		query: gql`
+
       });
       const productsId = data.products.data;
     
@@ -38,6 +85,7 @@ export async function getStaticPaths() {
 
     const { data } = await client.query({ 
         query: gql`
+
           query getProduct{
             product(id: ${params.id}){
                 data{
@@ -102,6 +150,21 @@ export async function getStaticPaths() {
             }
           }
         `,
+
+	});
+
+	// const {data, error, loading } =  useQuery(GET_PRODUCT);
+	// if(loading) return loading
+	// if(error) return error.message
+
+	return {
+		props: { data }
+	};
+};
+
+
+
+
       });
     return {
       // Passed to the page component as props
@@ -110,3 +173,4 @@ export async function getStaticPaths() {
   }
 
 export default Product;
+
