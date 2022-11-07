@@ -1,5 +1,5 @@
-import { Box, CardContent, Container, Grid } from '@mui/material';
-import Link from 'next/link';
+import { Container, Grid } from "@mui/material";
+import Link from "next/link";
 import {
   Card,
   CardImage,
@@ -11,38 +11,38 @@ import {
   SectionHeading,
   SectionTitle,
   StyledCardContent,
-} from '../../Styles/Home';
+} from "../../Styles/Home";
 
-import cardImg from '../../images/image 2.jpg';
-import data from '../../../utils/data';
+import data from "../../../utils/data";
 
-import { ButtonMaster } from '../../Styles/reusable';
+import cardImg from "../../../public/images/image 2.jpg";
+import { ButtonMaster } from "../../Styles/reusable";
 
 export default function TopProducts() {
   return (
     <Section>
-      <Container maxWidth='lg' sx={{ my: 5, py: 5 }}>
+      <Container maxWidth="lg" sx={{ my: 5, py: 5 }}>
         <SectionHeading>
           <SectionTitle>TOP PRODUCTS</SectionTitle>
-          <Link href={'/shop'}>View More</Link>
+          <Link href={"/shop"}>View More</Link>
         </SectionHeading>
         <Grid container spacing={2}>
-          {data.products.slice(0, 8).map((product) => (
-            <Grid item md='3'>
+          {data.products.slice(0, 4).map((product) => (
+            <Grid item md="3" key={product.id}>
               <Card>
                 <CardImageBox>
                   <CardImage
                     src={cardImg.src}
-                    alt='Card Image'
+                    alt="Card Image"
                     width={500}
                     height={500}
                     fill
                   />
                   <ButtonMaster
                     sx={{
-                      position: 'absolute',
-                      top: '10px',
-                      left: '10px',
+                      position: "absolute",
+                      top: "10px",
+                      left: "10px",
                     }}
                     off
                   >
@@ -50,10 +50,10 @@ export default function TopProducts() {
                   </ButtonMaster>
                 </CardImageBox>
                 <StyledCardContent>
-                  <CardTitle variant={'h4'}>T-Shirt</CardTitle>
+                  <CardTitle variant={"h4"}>T-Shirt</CardTitle>
                   <CardPricingSection>
                     <CardPrice>$25.00</CardPrice>
-                    <ButtonMaster btn='light'>+</ButtonMaster>
+                    <ButtonMaster btn="light">+</ButtonMaster>
                   </CardPricingSection>
                 </StyledCardContent>
               </Card>

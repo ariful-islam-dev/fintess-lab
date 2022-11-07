@@ -1,37 +1,25 @@
-import { Box, CardContent, Container, Grid } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import Link from 'next/link';
 
 import {
-  Card,
-  CardImage,
-  CardImageBox,
-  CardPrice,
-  CardPricingSection,
-  CardTitle,
   Section,
   SectionHeading,
-  SectionTitle,
-  StyledCardContent,
+  SectionTitle
 } from '../../Styles/Home';
 
-import cardImg from '../../images/image 2.jpg';
 // import data from '../../../utils/data';
 
-import { ButtonMaster } from '../../Styles/reusable';
-import { gql } from '@apollo/client';
-import client from '../../Apollo/client';
 import ProductCard from '../ProductCard/Index';
 
 export default function FlashDeals({ data }) {
   const product = data.products.data;
   const discountProduct = product.filter((item) => item.attributes.discount_price);
-  // console.log(discountProduct);
   return (
     <Section>
       <Container maxWidth='lg' sx={{ my: 5, py: 5 }}>
         <SectionHeading>
           <SectionTitle>Flash Deals</SectionTitle>
-          <Link href={'/shop'}>View More</Link>
+          <Link href={'/product'} passHref><a>View More</a></Link>
         </SectionHeading>
         <Grid container spacing={2}>
           {discountProduct.slice(0, 4).map((item) => (
@@ -49,7 +37,4 @@ export default function FlashDeals({ data }) {
 
 
 
-// const {data, error, loading } =  useQuery(GET_PRODUCT);
-// if(loading) return loading
-// if(error) return error.message
 

@@ -1,10 +1,9 @@
 
 import { gql } from '@apollo/client';
-import client from '../../components/Apollo/client';
-import AboutProduct from '../../components/ProductDetails/AboutProduct';
+import client from '../../components/apollo/client';
 import Shop from '../../components/Shop';
 
-export default function Products({ data }) {
+ function Products({ data }) {
   return (
     <div>
       <h1>This is product</h1>
@@ -62,12 +61,6 @@ export const getStaticProps= async()=> {
 };
 
  
-  
-  return{
-   props: {data}
-  }
-}
-
 
 export default Products;
 

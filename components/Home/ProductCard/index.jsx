@@ -1,6 +1,6 @@
-import { Box, CardContent, Container, Grid } from '@mui/material';
-import Link from 'next/link';
+import Link from "next/link";
 
+import cardImg from "../../../public/images/image 2.jpg";
 import {
   Card,
   CardImage,
@@ -8,49 +8,46 @@ import {
   CardPrice,
   CardPricingSection,
   CardTitle,
-  Section,
-  SectionHeading,
-  SectionTitle,
   StyledCardContent,
-} from '../../Styles/Home';
-import cardImg from '../../images/image 2.jpg';
-import { ButtonMaster } from '../../Styles/reusable';
+} from "../../Styles/Home";
+import { ButtonMaster } from "../../Styles/reusable";
 
 export default function ProductCard({ item }) {
-  console.log(item.id);
   return (
     <Card>
       <CardImageBox>
         <CardImage
           src={cardImg.src}
-          alt='Card Image'
+          alt="Card Image"
           width={500}
           height={500}
           fill
         />
         <ButtonMaster
           sx={{
-            position: 'absolute',
-            top: '10px',
-            left: '10px',
+            position: "absolute",
+            top: "10px",
+            left: "10px",
           }}
           off
         >
-          {((item.attributes.price - item.attributes.discount_price) /
-            item.attributes.price) *
-            100}{' '}
+          {(
+            ((item.attributes.price - item.attributes.discount_price) /
+              item.attributes.price) *
+            100
+          ).toFixed(2)}
           %OFF
         </ButtonMaster>
       </CardImageBox>
       <StyledCardContent>
-        <CardTitle variant={'h4'}>
-          {item.attributes.title.slice(0, 15)}
+        <CardTitle variant={"h4"}>
+          <Link href={`/products/${item.id}`} passHref>
+            <a>{item.attributes.title.slice(0, 15)}</a>
+          </Link>
         </CardTitle>
         <CardPricingSection>
           <CardPrice>{item.attributes.price}</CardPrice>
-          <Link href={`/products/${item.id}`} passHref>
-            <ButtonMaster btn='light'>+</ButtonMaster>
-          </Link>
+          <ButtonMaster btn="light">+</ButtonMaster>
         </CardPricingSection>
       </StyledCardContent>
     </Card>

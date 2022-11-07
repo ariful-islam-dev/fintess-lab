@@ -116,15 +116,7 @@ export const CardPricingSection = styled(Stack)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
 
-
-
-export const CardPrice = styled(Stack)(({theme})=>({
-    justifyContent: 'flex-start',
-    alignItems: 'flex-end',
-    color: theme.palette.primary.main,
-    font: theme.font?.interMedium16
-}))
-
+}));
 
 export const CardPrice = styled(Stack)(({ theme }) => ({
   justifyContent: 'flex-start',

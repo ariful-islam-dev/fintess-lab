@@ -1,57 +1,55 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Grid from '@mui/material/Grid';
-import Rating from '@mui/material/Rating';
-import { Container, Typography } from '@mui/material';
-import product from '../../../public/images/mainProduct.png';
-import sub1 from '../../../public/images/image7.png';
-import sub2 from '../../../public/images/image8.png';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
-import WorkIcon from '@mui/icons-material/Work';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
-import Divider from '@mui/material/Divider';
+import BeachAccessIcon from "@mui/icons-material/BeachAccess";
+import { Container, Typography } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import ListItemText from "@mui/material/ListItemText";
+import Paper from "@mui/material/Paper";
+import Rating from "@mui/material/Rating";
+import { styled } from "@mui/material/styles";
+import * as React from "react";
+import sub1 from "../../../public/images/image7.png";
+import sub2 from "../../../public/images/image8.png";
+import product from "../../../public/images/mainProduct.png";
 // import sub3 from '../../../public/images/image 7.png';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  textAlign: 'center',
+  textAlign: "center",
   color: theme.palette.text.secondary,
 }));
 
 const mainProduct = {
   backgroundImage: `url(${product.src})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  backgroundColor: 'black',
-  backgroundSize: 'cover',
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  backgroundColor: "black",
+  backgroundSize: "cover",
   height: 500,
   margin: 0,
 };
 
 const subProduct1 = {
   backgroundImage: `url(${sub1.src})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  backgroundColor: 'black',
-  backgroundSize: 'cover',
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  backgroundColor: "black",
+  backgroundSize: "cover",
   height: 192,
   margin: 0,
 };
 const subProduct2 = {
   backgroundImage: `url(${sub2.src})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  backgroundColor: 'black',
-  backgroundSize: 'cover',
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
+  backgroundColor: "black",
+  backgroundSize: "cover",
   height: 170,
 
   margin: 0,
@@ -84,21 +82,21 @@ const ProductDetails = ({ data }) => {
             <Item>
               <List
                 sx={{
-                  width: '100%',
+                  width: "100%",
                   maxWidth: 360,
-                  bgcolor: 'background.paper',
+                  bgcolor: "background.paper",
                 }}
               >
                 <ListItem>
                   <Box>
                     <Typography>Addidas full body </Typography>
                     <Box
-                      sx={{ display: 'flex', justifyContent: 'space-between' }}
+                      sx={{ display: "flex", justifyContent: "space-between" }}
                     >
                       <Typography>
                         <Rating
                           sx={{ pr: 3 }}
-                          name='read-only'
+                          name="read-only"
                           value={value}
                           readOnly
                         />
@@ -106,27 +104,27 @@ const ProductDetails = ({ data }) => {
                       <Typography>Brand: </Typography>
                     </Box>
                     <Box
-                      sx={{ display: 'flex', justifyContent: 'space-between' }}
+                      sx={{ display: "flex", justifyContent: "space-between" }}
                     >
                       <Typography>Price: </Typography>
                       <Typography>You save: </Typography>
                     </Box>
                   </Box>
                 </ListItem>
-                <Divider variant='inset' component='li' />
+                <Divider variant="inset" component="li" />
 
                 <ListItem>
                   <Typography>Color</Typography>
-                  <ListItemText primary='Work' secondary='Jan 7, 2014' />
+                  <ListItemText primary="Work" secondary="Jan 7, 2014" />
                 </ListItem>
-                <Divider variant='inset' component='li' />
+                <Divider variant="inset" component="li" />
                 <ListItem>
                   <ListItemAvatar>
                     <Avatar>
                       <BeachAccessIcon />
                     </Avatar>
                   </ListItemAvatar>
-                  <ListItemText primary='Vacation' secondary='July 20, 2014' />
+                  <ListItemText primary="Vacation" secondary="July 20, 2014" />
                 </ListItem>
               </List>
             </Item>
@@ -136,7 +134,7 @@ const ProductDetails = ({ data }) => {
       {/* #####################################
                         COMMENTS
       #######################################*/}
-      <Box sx={{ flexGrow: 1, my: 5, bgcolor: '#ffff' }}>
+      <Box sx={{ flexGrow: 1, my: 5, bgcolor: "#ffff" }}>
         <Typography>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo
           vero atque quaerat nulla veritatis ipsam error necessitatibus? Est
@@ -144,27 +142,27 @@ const ProductDetails = ({ data }) => {
           maiores? Quaerat commodi magnam repellat cum necessitatibus suscipit
           dolores quidem pariatur amet.
         </Typography>
-        <Divider component='li' />
-        <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-          <ListItem alignItems='flex-start'>
+        <Divider component="li" />
+        <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+          <ListItem alignItems="flex-start">
             <ListItemAvatar>
-              <Avatar alt='Remy Sharp' src='/static/images/avatar/1.jpg' />
+              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
             </ListItemAvatar>
             <ListItemText
-              primary='Brunch this weekend?'
+              primary="Brunch this weekend?"
               secondary={
                 <React.Fragment>
                   <Rating
                     sx={{ pr: 3 }}
-                    name='read-only'
+                    name="read-only"
                     value={value}
                     readOnly
                   />
                   <Typography
-                    sx={{ display: 'inline' }}
-                    component='span'
-                    variant='body2'
-                    color='text.primary'
+                    sx={{ display: "inline" }}
+                    component="span"
+                    variant="body2"
+                    color="text.primary"
                   >
                     Ali Connors
                   </Typography>
