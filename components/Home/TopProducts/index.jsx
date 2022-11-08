@@ -24,7 +24,9 @@ export default function TopProducts() {
       <Container maxWidth="lg" sx={{ my: 5, py: 5 }}>
         <SectionHeading>
           <SectionTitle>TOP PRODUCTS</SectionTitle>
-          <Link href={"/shop"}>View More</Link>
+          <Link href={"/products"} passHref>
+            <a>View More</a>
+          </Link>
         </SectionHeading>
         <Grid container spacing={2}>
           {data.products.slice(0, 4).map((product) => (
@@ -44,7 +46,7 @@ export default function TopProducts() {
                       top: "10px",
                       left: "10px",
                     }}
-                    off
+                    off="true"
                   >
                     10% Off
                   </ButtonMaster>
