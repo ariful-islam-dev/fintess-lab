@@ -1,6 +1,7 @@
 
-import { Link, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import Link from "next/link";
 
 
 export const FooterArea = styled("footer")(({ theme }) => ({

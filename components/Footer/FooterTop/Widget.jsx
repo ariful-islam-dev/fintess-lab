@@ -17,8 +17,8 @@ export default function Widget({ item }) {
     >
       {Object.values(item)[0].map((list) => (
         <ListItem key={list.name} sx={{ padding: " 0" }}>
-          <Anchor href={list.path} component={"a"} passHref>
-            {list.name}
+          <Anchor href={list.path} passHref>
+            <a> {list.name}</a>
           </Anchor>
         </ListItem>
       ))}

@@ -18,7 +18,10 @@ const AvatarIcon = ({ user }) => {
       <Box sx={{ flexGrow: 0 }}>
         <Tooltip title={user.username}>
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-            <Avatar alt={user.username} src="/static/images/avatar/2.jpg" />
+            <Avatar
+              alt={user.username}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYzcsSpJbl4Iokc_4n3EISbGE3hiRVcRkfLw&usqp=CAU"
+            />
           </IconButton>
         </Tooltip>
         <Menu

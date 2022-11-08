@@ -21,7 +21,6 @@ export default function ProductCard({ item }) {
           alt="Card Image"
           width={500}
           height={500}
-          fill
         />
         <ButtonMaster
           sx={{
@@ -29,7 +28,7 @@ export default function ProductCard({ item }) {
             top: "10px",
             left: "10px",
           }}
-          off
+          off="true"
         >
           {(
             ((item.attributes.price - item.attributes.discount_price) /

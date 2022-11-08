@@ -146,7 +146,10 @@ const ProductDetails = ({ data }) => {
         <List sx={{ width: "100%", bgcolor: "background.paper" }}>
           <ListItem alignItems="flex-start">
             <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              <Avatar
+                alt="Remy Sharp"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYzcsSpJbl4Iokc_4n3EISbGE3hiRVcRkfLw&usqp=CAU"
+              />
             </ListItemAvatar>
             <ListItemText
               primary="Brunch this weekend?"

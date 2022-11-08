@@ -23,7 +23,7 @@ export default function FlashDeals({ data }) {
         </SectionHeading>
         <Grid container spacing={2}>
           {discountProduct.slice(0, 4).map((item) => (
-            <Grid item md='3' key={item.id}>
+            <Grid item md={3} key={item.id}>
               <ProductCard item={item}></ProductCard>
             </Grid>
           )
