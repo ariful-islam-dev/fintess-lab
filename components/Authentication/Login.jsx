@@ -73,7 +73,6 @@ const Login = ({ handleLogin }) => {
         sx={{
           my: 5,
           padding: 2,
-          width: { md: "70%", xs: "100%" },
         }}
         component="form"
         onSubmit={handleSubmit(onSubmit)}

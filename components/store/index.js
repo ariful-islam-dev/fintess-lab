@@ -7,6 +7,12 @@ const store = createStore(persist({
     accessories: [],
     exercise: [],
    },
+   category: null,
+
+   handleCategory: action((state, payload)=>{
+    state.category = payload
+   }),
+
   
 
   addMenu: action((state, payload) => {

@@ -52,7 +52,7 @@ const Signup = ({ UserLogin, handleLogin }) => {
       const {
         jwt,
         user: { id, email, username },
-      } = data?.login;
+      } = data?.register;
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -70,7 +70,6 @@ const Signup = ({ UserLogin, handleLogin }) => {
       sx={{
         my: 5,
         padding: 2,
-        width: { md: "70%", xs: "100%" },
       }}
       component="form"
       onSubmit={handleSubmit(onSubmit)}
