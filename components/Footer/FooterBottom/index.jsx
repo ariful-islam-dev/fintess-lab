@@ -6,25 +6,30 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import master from "../../../public/images/master.png";
+import paypal from "../../../public/images/paypal.png";
+import visa from "../../../public/images/visa.png";
+import electron from "../../../public/images/visa_electron.png";
 
 const footerCard = [
   {
     name: "Visa Card",
-    icon: "http://localhost:3000/images/visa.png",
+    icon: visa,
   },
   {
     name: "Master Card",
-    icon: "http://localhost:3000/images/master.png",
+    icon: paypal,
   },
   {
     name: "Paypal",
-    icon: "http://localhost:3000/images/paypal.png",
+    icon: master,
   },
   {
     name: "Visa Electron",
-    icon: "http://localhost:3000/images/visa_electron.png",
+    icon: electron,
   },
 ];
 
@@ -61,11 +66,11 @@ const FooterBottom = () => {
               >
                 {footerCard.map((item) => (
                   <ImageListItem key={item.name} sx={{ width: 80, height: 40 }}>
-                    <img
+                    <Image
                       src={item.icon}
-                      srcSet={item.icon}
                       alt={item.name}
-                      loading="lazy"
+                      width={80}
+                      height={40}
                     />
                   </ImageListItem>
                 ))}
