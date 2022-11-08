@@ -38,7 +38,7 @@ function Header() {
     const user = localStorage.getItem("user");
     const newUser = JSON.parse(user);
     setUser(newUser);
-  }, [user]);
+  }, []);
 
   return (
     <AppBar position="static" color={"inherit"}>
@@ -65,7 +65,7 @@ function Header() {
               btn="secondary"
               component="a"
               href="/login"
-              sx={{ padding: 1, fontSize: { xs: "14px", md: "16px" } }}
+              sx={{ padding: 1, fontSize: "14px" }}
             >
               Login
             </ButtonMaster>

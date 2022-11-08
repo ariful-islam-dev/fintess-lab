@@ -3,8 +3,9 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
-import { useStoreState } from "easy-peasy";
-import * as React from "react";
+import { useStoreActions, useStoreState } from "easy-peasy";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -50,10 +51,13 @@ const StyledMenu = styled((props) => (
 }));
 
 export default function Dropdown({ children }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [dropdown, setDropdown] = React.useState([]);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [dropdown, setDropdown] = useState([]);
+  const router = useRouter();
+
   const open = Boolean(anchorEl);
-  const menu = useStoreState((state) => state.menu);
+  const { menu } = useStoreState((state) => state);
+  const categoryHandler = useStoreActions((state) => state.handleCategory);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -61,7 +65,15 @@ export default function Dropdown({ children }) {
     setAnchorEl(null);
   };
 
-  React.useEffect(() => {
+  const handleCategory = (value) => {
+    categoryHandler(value);
+    handleClose();
+    if (router.pathname !== "/products") {
+      router.push("/products");
+    }
+  };
+
+  useEffect(() => {
     if (children === "men") {
       setDropdown(menu.men);
     }
@@ -74,7 +86,7 @@ export default function Dropdown({ children }) {
     if (children === "exercise") {
       setDropdown(menu.exercise);
     }
-  }, [dropdown, children, menu]);
+  }, [children, menu]);
 
   return (
     <div>
@@ -100,7 +112,11 @@ export default function Dropdown({ children }) {
         onClose={handleClose}
       >
         {dropdown.map((item) => (
-          <MenuItem onClick={handleClose} disableRipple key={item}>
+          <MenuItem
+            onClick={() => handleCategory(item)}
+            disableRipple
+            key={item}
+          >
             {item}
           </MenuItem>
         ))}
