@@ -1,4 +1,3 @@
-import React from "react";
 import Brand from "./Brand";
 import Pricing from "./pricing";
 
