@@ -1,5 +1,6 @@
 import { Container, Grid } from '@mui/material';
 import Link from 'next/link';
+import ProductCard from '../../ProductPage/Cards/ProductCard';
 
 import {
   Section,
@@ -9,7 +10,6 @@ import {
 
 // import data from '../../../utils/data';
 
-import ProductCard from '../ProductCard/Index';
 
 export default function FlashDeals({ data }) {
   const product = data.products.data;
@@ -23,7 +23,7 @@ export default function FlashDeals({ data }) {
         </SectionHeading>
         <Grid container spacing={2}>
           {discountProduct.slice(0, 4).map((item) => (
-            <Grid item md={3} key={item.id}>
+            <Grid item lg={3} key={item.id}>
               <ProductCard item={item}></ProductCard>
             </Grid>
           )

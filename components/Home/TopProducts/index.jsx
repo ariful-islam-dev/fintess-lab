@@ -2,7 +2,6 @@ import { Container, Grid } from "@mui/material";
 import Link from "next/link";
 import {
   Card,
-  CardImage,
   CardImageBox,
   CardPrice,
   CardPricingSection,
@@ -15,6 +14,7 @@ import {
 
 import data from "../../../utils/data";
 
+import Image from "next/image";
 import cardImg from "../../../public/images/image 2.jpg";
 import { ButtonMaster } from "../../Styles/reusable";
 
@@ -30,10 +30,10 @@ export default function TopProducts() {
         </SectionHeading>
         <Grid container spacing={2}>
           {data.products.slice(0, 4).map((product) => (
-            <Grid item md="3" key={product.id}>
+            <Grid item md={3} key={product.id}>
               <Card>
                 <CardImageBox>
-                  <CardImage
+                  <Image
                     src={cardImg.src}
                     alt="Card Image"
                     width={500}
@@ -52,7 +52,7 @@ export default function TopProducts() {
                   </ButtonMaster>
                 </CardImageBox>
                 <StyledCardContent>
-                  <CardTitle variant={"h4"}>T-Shirt</CardTitle>
+                  <CardTitle variant="h4">T-Shirt</CardTitle>
                   <CardPricingSection>
                     <CardPrice>$25.00</CardPrice>
                     <ButtonMaster btn="light">+</ButtonMaster>

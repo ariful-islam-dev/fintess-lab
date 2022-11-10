@@ -68,7 +68,7 @@ const TopImage = () => {
                   Fitness world a reliable & compatible source of sports &
                   fitness equipment’s company
                 </Typography>
-                <ButtonMaster white>BUY NOW</ButtonMaster>
+                <ButtonMaster btn="light">BUY NOW</ButtonMaster>
               </Box>
             </TopItem>
           </Grid>

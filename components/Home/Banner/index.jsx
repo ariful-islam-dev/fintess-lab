@@ -26,7 +26,7 @@ export default function Banner() {
           sx={{ display: "inline-block" }}
           onClick={() => router.push("/products")}
         >
-          <a>SHOP NOW</a>
+          SHOP NOW
         </ButtonMaster>
       </Container>
     </Box>
