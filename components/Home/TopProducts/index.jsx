@@ -12,8 +12,6 @@ import {
   StyledCardContent,
 } from "../../Styles/Home";
 
-import data from "../../../utils/data";
-
 import Image from "next/image";
 import cardImg from "../../../public/images/image 2.jpg";
 import { ButtonMaster } from "../../Styles/reusable";
@@ -29,38 +27,38 @@ export default function TopProducts() {
           </Link>
         </SectionHeading>
         <Grid container spacing={2}>
-          {data.products.slice(0, 4).map((product) => (
-            <Grid item md={3} key={product.id}>
-              <Card>
-                <CardImageBox>
-                  <Image
-                    src={cardImg.src}
-                    alt="Card Image"
-                    width={500}
-                    height={500}
-                    fill
-                  />
-                  <ButtonMaster
-                    sx={{
-                      position: "absolute",
-                      top: "10px",
-                      left: "10px",
-                    }}
-                    off="true"
-                  >
-                    10% Off
-                  </ButtonMaster>
-                </CardImageBox>
-                <StyledCardContent>
-                  <CardTitle variant="h4">T-Shirt</CardTitle>
-                  <CardPricingSection>
-                    <CardPrice>$25.00</CardPrice>
-                    <ButtonMaster btn="light">+</ButtonMaster>
-                  </CardPricingSection>
-                </StyledCardContent>
-              </Card>
-            </Grid>
-          ))}
+          {/* {data.products.slice(0, 4).map((product) => ( */}
+          <Grid item md={3}>
+            <Card>
+              <CardImageBox>
+                <Image
+                  src={cardImg.src}
+                  alt="Card Image"
+                  width={500}
+                  height={500}
+                  fill
+                />
+                <ButtonMaster
+                  sx={{
+                    position: "absolute",
+                    top: "10px",
+                    left: "10px",
+                  }}
+                  off="true"
+                >
+                  10% Off
+                </ButtonMaster>
+              </CardImageBox>
+              <StyledCardContent>
+                <CardTitle variant="h4">T-Shirt</CardTitle>
+                <CardPricingSection>
+                  <CardPrice>$25.00</CardPrice>
+                  <ButtonMaster btn="light">+</ButtonMaster>
+                </CardPricingSection>
+              </StyledCardContent>
+            </Card>
+          </Grid>
+          {/* ))} */}
         </Grid>
       </Container>
     </Section>

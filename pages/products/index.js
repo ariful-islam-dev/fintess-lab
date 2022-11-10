@@ -2,8 +2,8 @@
 import { gql } from '@apollo/client';
 import { Box, Container, Grid } from '@mui/material';
 import client from '../../components/apollo/client';
-import Cards from '../../components/ProductPage/Cards';
-import Sidebar from '../../components/ProductPage/Sidebar';
+import Cards from '../../components/Product/Cards';
+import Sidebar from '../../components/Product/Sidebar';
 
  function Products({ data }) {
   console.log(data)
