@@ -1,7 +1,6 @@
 import { Container, Grid } from '@mui/material';
 import Link from 'next/link';
-import ProductCard from '../../ProductPage/Cards/ProductCard';
-
+import ProductCard from '../../Product/Cards/ProductCard';
 import {
   Section,
   SectionHeading,
