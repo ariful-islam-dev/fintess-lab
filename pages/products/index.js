@@ -1,13 +1,32 @@
 
 import { gql } from '@apollo/client';
+import { Box, Container, Grid } from '@mui/material';
 import client from '../../components/apollo/client';
-import Shop from '../../components/Shop';
+import Cards from '../../components/ProductPage/Cards';
+import Sidebar from '../../components/ProductPage/Sidebar';
 
  function Products({ data }) {
+  console.log(data)
+  
   return (
     <div>
-      <h1>This is product</h1>
-      <Shop data={data}></Shop>
+        <Container maxWidth="lg">
+          {/**************************** / All Cards Here Start *************************/}
+          <Box>
+            <Grid container spacing={2} >
+              <Grid items lg={3}>
+                <Sidebar/>
+              </Grid>
+              <Grid items lg={9}>
+                <Cards data={data.products.data}/>
+              </Grid>
+            </Grid>
+          </Box>
+          {/**************************** / All Cards Here End *************************/}
+          {/**************************** / Pagination Start *************************/}
+          {/**************************** / Pagination End *************************/}
+          
+        </Container>
     </div>
   );
 }
@@ -18,6 +37,7 @@ import Shop from '../../components/Shop';
 
 
 export const getStaticProps= async()=> { 
+  //  const {category}= useStoreState(state=>state)
   const { data } = await client.query({ 
     query: gql`
       query getProducts  {
