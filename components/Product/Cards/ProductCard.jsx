@@ -1,3 +1,6 @@
+import { StarBorder } from "@mui/icons-material";
+import AddIcon from "@mui/icons-material/Add";
+import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +13,7 @@ import {
   StyledCardContent,
 } from "../../Styles/Home";
 import { ButtonMaster } from "../../Styles/reusable";
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, popular }) => {
   console.log(item);
   return (
     <div>
@@ -44,9 +47,21 @@ const ProductCard = ({ item }) => {
               <a>{item.attributes.title.slice(0, 15)}</a>
             </Link>
           </CardTitle>
+          {popular && (
+            <Typography variant="body2">
+              <StarBorder />
+              <StarBorder />
+              <StarBorder />
+              <StarBorder />
+              <StarBorder />
+            </Typography>
+          )}
           <CardPricingSection>
             <CardPrice>{item.attributes.price}</CardPrice>
-            <ButtonMaster btn="light">+</ButtonMaster>
+
+            <ButtonMaster btn="light" plus>
+              <AddIcon />
+            </ButtonMaster>
           </CardPricingSection>
         </StyledCardContent>
       </Card>
