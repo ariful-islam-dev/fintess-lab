@@ -1,7 +1,6 @@
 
 import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Link from "next/link";
 
 
 export const FooterArea = styled("footer")(({ theme }) => ({
@@ -9,7 +8,7 @@ export const FooterArea = styled("footer")(({ theme }) => ({
   color: theme.palette.secondary.gray50,
   padding: "68px 0"
 }));
-export const Anchor = styled(Link)(({ theme }) => ({
+export const Anchor = styled(("a"))(({ theme }) => ({
   font: theme.font?.interMedium14,
   color: theme.palette?.secondary.gray500,
   padding: '5px 0px',

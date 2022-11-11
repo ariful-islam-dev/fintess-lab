@@ -4,7 +4,7 @@ import React from "react";
 import Dropdown from "./Dropdown";
 
 const Desktop = () => {
-  const storeMenu = useStoreState((state) => state.menu);
+  const storeMenu = useStoreState((state) => state.menu.menu);
 
   return (
     <>

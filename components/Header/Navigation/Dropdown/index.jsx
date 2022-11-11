@@ -56,8 +56,10 @@ export default function Dropdown({ children }) {
   const router = useRouter();
 
   const open = Boolean(anchorEl);
-  const { menu } = useStoreState((state) => state);
-  const categoryHandler = useStoreActions((state) => state.handleCategory);
+  const { menu } = useStoreState((state) => state.menu);
+  const categoryHandler = useStoreActions(
+    (state) => state.category.handleCategory
+  );
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };

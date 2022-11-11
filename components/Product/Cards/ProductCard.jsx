@@ -14,7 +14,11 @@ import {
 } from "../../Styles/Home";
 import { ButtonMaster } from "../../Styles/reusable";
 const ProductCard = ({ item, popular }) => {
-  console.log(item);
+  const off = Number.parseFloat(
+    (item.attributes.price - item.attributes.discount_price) /
+      item.attributes.price
+  );
+
   return (
     <div>
       <Card>
@@ -25,21 +29,19 @@ const ProductCard = ({ item, popular }) => {
             width={500}
             height={500}
           />
-          <ButtonMaster
-            sx={{
-              position: "absolute",
-              top: "10px",
-              left: "10px",
-            }}
-            off="true"
-          >
-            {(
-              ((item.attributes.price - item.attributes.discount_price) /
-                item.attributes.price) *
-              100
-            ).toFixed(2)}
-            %OFF
-          </ButtonMaster>
+
+          {item?.attributes.discount_price && (
+            <ButtonMaster
+              sx={{
+                position: "absolute",
+                top: "10px",
+                left: "10px",
+              }}
+              off="true"
+            >
+              {Math.floor(off * 100)} % off
+            </ButtonMaster>
+          )}
         </CardImageBox>
         <StyledCardContent>
           <CardTitle variant={"h4"}>
@@ -57,7 +59,28 @@ const ProductCard = ({ item, popular }) => {
             </Typography>
           )}
           <CardPricingSection>
-            <CardPrice>{item.attributes.price}</CardPrice>
+            {item?.attributes?.discount_price ? (
+              <Typography variant="body2" sx={{ display: "flex" }}>
+                <CardPrice>
+                  $
+                  {Number.parseFloat(item.attributes.discount_price).toFixed(2)}
+                </CardPrice>{" "}
+                <CardPrice
+                  sx={{
+                    fontSize: "13px",
+                    lineHeight: "25px",
+                    paddingLeft: "5px",
+                    color: "gray",
+                  }}
+                >
+                  <s>${Number.parseFloat(item.attributes.price).toFixed(2)}</s>
+                </CardPrice>
+              </Typography>
+            ) : (
+              <CardPrice>
+                ${Number.parseFloat(item.attributes.price).toFixed(2)}
+              </CardPrice>
+            )}
 
             <ButtonMaster btn="light" plus>
               <AddIcon />
