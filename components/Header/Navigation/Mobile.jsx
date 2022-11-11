@@ -7,7 +7,7 @@ import Dropdown from "./Dropdown";
 
 const Mobile = () => {
   const { handleOpenNavMenu, anchorElNav, handleCloseNavMenu } = useHeader();
-  const storeMenu = useStoreState((state) => state.menu);
+  const storeMenu = useStoreState((state) => state.menu.menu);
 
   return (
     <>

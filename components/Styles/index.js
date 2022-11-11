@@ -39,6 +39,7 @@ export const theme = createTheme({
     interSemiBold20: `600 20px 'Inter', sans-serif`,
     barlowSemiBold20: `600 20px 'Barlow Condensed', sans-serif`,
     barlowSemiBold24: `600 24px 'Barlow Condensed', sans-serif`,
+    barlowSemiBold48: `600 48px 'Barlow Condensed', sans-serif`,
     barlowSemiBold32: `700 32px 'Barlow Condensed', sans-serif`,
     barlowSemiBold82: `700 82px/82px 'Barlow Condensed', sans-serif`,
   },

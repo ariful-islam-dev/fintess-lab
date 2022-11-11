@@ -25,9 +25,7 @@ export const ImageTitle = styled(Typography)(({ theme }) => ({
 }));
 export const Imagetext = styled(Typography)(({ theme }) => ({
   // color: theme.secondary.gray50,
-  fontFamily: theme.fontName?.barlow,
-  fontWeight: "600",
-  fontSize: "48px",
+  font: theme.font.barlowSemiBold48,
   lineHeight: "58px",
 
   font: theme.font?.barlowSemiBold82,

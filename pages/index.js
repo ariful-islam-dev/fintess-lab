@@ -12,8 +12,6 @@ import TopImage from '../components/Home/TopImage';
 
 export default function Home({ data }) {
   // const popular = data && data?.products?.data.reverse()
-
-console.log(data)
   return (
     <div>
       <Banner></Banner>

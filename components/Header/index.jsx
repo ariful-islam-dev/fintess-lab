@@ -14,7 +14,7 @@ import Mobile from "./Navigation/Mobile";
 import SearchBar from "./SearchBar";
 
 function Header() {
-  const addMenu = useStoreActions((state) => state.addMenu);
+  const addMenu = useStoreActions((state) => state.menu.addMenu);
   const [user, setUser] = useState({});
 
   const GET_CATEGORY = gql`

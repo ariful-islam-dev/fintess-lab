@@ -1,5 +1,6 @@
 import { ListItem } from "@mui/material";
 import List from "@mui/material/List";
+import Link from "next/link";
 import * as React from "react";
 import { Anchor } from "../../Styles/Footer";
 
@@ -17,9 +18,9 @@ export default function Widget({ item }) {
     >
       {Object.values(item)[0].map((list) => (
         <ListItem key={list.name} sx={{ padding: " 0" }}>
-          <Anchor href={list.path} passHref>
-            <a> {list.name}</a>
-          </Anchor>
+          <Link href={list.path} passHref>
+            <Anchor> {list.name}</Anchor>
+          </Link>
         </ListItem>
       ))}
     </List>
