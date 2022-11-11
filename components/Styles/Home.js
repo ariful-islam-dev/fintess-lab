@@ -137,3 +137,16 @@ export const TopItem = styled(Paper)(({ theme }) => ({
   margin: '300px',
   position: 'relative'
 }));
+
+export const Href = styled(('a'))(({theme})=>({
+
+font: theme.font.interMedium16,
+lineHeight: "19px",
+color: theme.palette.secondary.gray600,
+width: '130px',
+'&: hover': {
+  color: theme.palette.primary.main,
+  textDecoration: 'underline'
+}
+
+}))

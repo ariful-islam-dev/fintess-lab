@@ -3,21 +3,22 @@ import { gql } from '@apollo/client';
 import client from '../components/apollo/client';
 import Banner from '../components/Home/Banner';
 import FlashDeals from '../components/Home/FlashDeals';
+import Popular from '../components/Home/Popular';
 
 
 import TopImage from '../components/Home/TopImage';
-import TopProducts from '../components/Home/TopProducts';
 
 
 
 export default function Home({ data }) {
+  // const popular = data && data?.products?.data.reverse()
 
-
+console.log(data)
   return (
     <div>
       <Banner></Banner>
-      <FlashDeals data={data}></FlashDeals>
-      <TopProducts></TopProducts>
+      <FlashDeals data={data?.products.data}></FlashDeals>
+      <Popular data={data?.products.data}></Popular>
       <TopImage></TopImage>
     </div>
   );

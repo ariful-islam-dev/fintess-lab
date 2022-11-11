@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles";
 
 
 
-export const ButtonMaster = styled(Button)(({ theme, btn, off, disabled }) => ({
+export const ButtonMaster = styled(Button)(({ theme, btn, off, disabled, plus }) => ({
   color: `${
     (btn === "secondary" && theme?.palette?.secondary?.main) ||
     (btn === "light" && theme.palette?.primary?.main) ||
@@ -23,7 +23,7 @@ export const ButtonMaster = styled(Button)(({ theme, btn, off, disabled }) => ({
   alignItems: "flex-start",
   gap: "10px",
   borderRadius: "8px",
-  padding: `${off ? "4px 12px" : "16px 32px"}`,
+  padding: `${(off || plus) ? "4px 12px" : "16px 32px"}`,
   font: `${off ? theme.font?.interMedium13 : theme.font?.interSemiBold16}`,
   textTransform: "none",
   "&: hover": {
