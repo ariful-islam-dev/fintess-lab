@@ -7,7 +7,7 @@ const store = createStore(persist({
  menu: menu,
  brand: brand,
  category: filterCategory,
- warranty: warranty,
+ warranty: warranty
   
 }));
 

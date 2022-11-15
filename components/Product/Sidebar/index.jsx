@@ -1,17 +1,17 @@
+import { FilterContainer } from "../../Styles/Product";
+import Brands from "./Brands";
+import Materials from "./Metarials";
 import PriceRange from "./PriceRange";
-import SidebarSection from "./SidebarSection";
+import Warranties from "./Warranties";
 
 const Sidebar = () => {
   return (
-    <div>
+    <FilterContainer>
       <PriceRange />
-      <SidebarSection title="Brand" />
-      <SidebarSection title="Material" />
-      <SidebarSection title="Warranty Period" />
-      {/* <Brand />
-      <Material />
-      <Warranty /> */}
-    </div>
+      <Brands />
+      <Materials />
+      <Warranties />
+    </FilterContainer>
   );
 };
 

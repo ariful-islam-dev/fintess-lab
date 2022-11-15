@@ -7,17 +7,19 @@ import {
 import SectionHeader from '../SectionHeader';
 
 
-export default function FlashDeals({ data }) {
+export default function FlashDeals({ data}) {
  
-  const discountProduct = data.filter((item) => item.attributes.discount_price);
+  const discountProduct = data?.filter((item) => item.attributes.discount_price);
   return (
     <Section>
       <Container maxWidth='lg' sx={{ my: 5, py: 5 }}>
         <SectionHeader title={'Flash Deals'} link={"View all"}/>
         <Grid container spacing={2}>
-          {discountProduct.slice(0, 4).map((item) => (
+          {discountProduct?.slice(0, 4).map((item) => (
             <Grid item lg={3} key={item.id}>
+            
               <ProductCard item={item}></ProductCard>
+           
             </Grid>
           )
           )}

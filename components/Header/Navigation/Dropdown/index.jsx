@@ -3,9 +3,10 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
-import { useStoreActions, useStoreState } from "easy-peasy";
+import { useStoreState } from "easy-peasy";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import useFilter from "../../../../hooks/useFilter";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -54,12 +55,13 @@ export default function Dropdown({ children }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [dropdown, setDropdown] = useState([]);
   const router = useRouter();
+  const { handleMenu } = useFilter();
 
   const open = Boolean(anchorEl);
-  const { menu } = useStoreState((state) => state.menu);
-  const categoryHandler = useStoreActions(
-    (state) => state.category.handleCategory
-  );
+  const {
+    menu: { menu },
+  } = useStoreState((state) => state);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -68,7 +70,7 @@ export default function Dropdown({ children }) {
   };
 
   const handleCategory = (value) => {
-    categoryHandler(value);
+    handleMenu(children, value);
     handleClose();
     if (router.pathname !== "/products") {
       router.push("/products");
@@ -88,7 +90,7 @@ export default function Dropdown({ children }) {
     if (children === "exercise") {
       setDropdown(menu.exercise);
     }
-  }, [children, menu]);
+  }, [children, menu, handleMenu]);
 
   return (
     <div>

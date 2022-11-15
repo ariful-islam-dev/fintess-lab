@@ -1,10 +1,13 @@
 import { action } from "easy-peasy"
 
 export const filterCategory={
-    category: null,
-
-   handleCategory: action((state, payload)=>{
-    state.category = payload
+    
+    type: undefined,
+    name: undefined,
+    handleCategory: action((state, payload)=>{
+        console.log(payload)
+    state.type = payload.value,
+    state.name = payload.children
    }),
 
 }

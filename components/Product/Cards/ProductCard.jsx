@@ -1,9 +1,9 @@
-import { StarBorder } from "@mui/icons-material";
-import AddIcon from "@mui/icons-material/Add";
-import { Typography } from "@mui/material";
+import { Box, Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useCart } from "../../../hooks/useCart";
 
+import AddIcon from "@mui/icons-material/Add";
 import {
   Card,
   CardImageBox,
@@ -18,13 +18,20 @@ const ProductCard = ({ item, popular }) => {
     (item.attributes.price - item.attributes.discount_price) /
       item.attributes.price
   );
+  const { handleCart, cart } = useCart();
+
+  const handleAddLocalStorage = (item) => {
+    handleCart(item);
+  };
+
+  const product = cart.find((cat) => cat.id === item.id);
 
   return (
     <div>
       <Card>
         <CardImageBox>
           <Image
-            src={item.attributes.thumbnails.data[0].attributes.url}
+            src={item?.attributes?.thumbnails?.data[0]?.attributes.url}
             alt="Card Image"
             width={500}
             height={500}
@@ -51,11 +58,7 @@ const ProductCard = ({ item, popular }) => {
           </CardTitle>
           {popular && (
             <Typography variant="body2">
-              <StarBorder />
-              <StarBorder />
-              <StarBorder />
-              <StarBorder />
-              <StarBorder />
+              <Rating name="no-value" value={null} />
             </Typography>
           )}
           <CardPricingSection>
@@ -82,9 +85,35 @@ const ProductCard = ({ item, popular }) => {
               </CardPrice>
             )}
 
-            <ButtonMaster btn="light" plus>
-              <AddIcon />
-            </ButtonMaster>
+            {product ? (
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <ButtonMaster
+                  btn="light"
+                  cart={"cart"}
+                  onClick={() => handleAddLocalStorage(item)}
+                >
+                  <AddIcon />
+                </ButtonMaster>
+                <Typography>{product?.quantity}</Typography>
+                <ButtonMaster
+                  btn="light"
+                  cart={"cart"}
+                  onClick={() => handleAddLocalStorage(item)}
+                >
+                  <AddIcon />
+                </ButtonMaster>
+              </Box>
+            ) : (
+              <Box>
+                <ButtonMaster
+                  btn="light"
+                  cart={"cart"}
+                  onClick={() => handleAddLocalStorage(item)}
+                >
+                  <AddIcon />
+                </ButtonMaster>
+              </Box>
+            )}
           </CardPricingSection>
         </StyledCardContent>
       </Card>

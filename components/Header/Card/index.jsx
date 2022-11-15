@@ -1,8 +1,10 @@
 import { ShoppingCart } from "@mui/icons-material";
 import { Badge, IconButton } from "@mui/material";
 import React from "react";
+import { useCart } from "../../../hooks/useCart";
 
 const CardHeader = () => {
+  const { cart } = useCart();
   return (
     <>
       <IconButton
@@ -10,7 +12,7 @@ const CardHeader = () => {
         aria-label="show 17 new notifications"
         color="inherit"
       >
-        <Badge badgeContent={17} color="error">
+        <Badge badgeContent={cart.length} color="error">
           <ShoppingCart />
         </Badge>
       </IconButton>
