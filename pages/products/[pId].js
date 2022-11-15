@@ -1,7 +1,8 @@
 
 import { gql, useQuery } from "@apollo/client";
+import { Container } from "@mui/material";
 import { useRouter } from "next/router";
-import { SectionHeading, SectionTitle } from "../../components/Styles/Home";
+import ProductsDetails from "../../components/ProductDetails";
 
 const GET_PRODUCT_BY_ID = gql`
         query getProductById($pId: ID!){
@@ -85,11 +86,9 @@ function Product() {
   
 
 	return (
-		<div>
-     <SectionHeading>
-      <SectionTitle>{data?.product.data.attributes.title}</SectionTitle>
-     </SectionHeading>
-		</div>
+	<Container mexWidth="lg">
+    <ProductsDetails data={data?.product?.data}/>
+  </Container>
 	);
 };
 

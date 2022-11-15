@@ -109,3 +109,78 @@ query{
 }
       
 `
+
+export const GET_PRODUCT_BY_ID=gql`
+query Product($id: ID!){
+  product(id: $id){
+    data{
+      id,
+      attributes{
+        title, 
+        price,
+        discount_price,
+        description,
+        stock,
+        
+        thumbnails{
+          data{
+            id,
+            attributes {
+              url
+            }
+          }
+        },
+        categories{
+          data{
+            id,
+              attributes{
+                Type, Name
+              }
+            
+          }
+        },
+        brand{
+          data{
+            id,
+            attributes{
+              name
+            }
+          }
+        },
+        warranty{
+          data{
+            id,
+            attributes{
+              period
+            }
+          }
+        },
+        metarial{
+          data{
+            id,
+            attributes{
+              name
+            }
+          }
+        },
+        colors{
+          data{
+            id,
+            attributes{
+              name
+            }
+          }
+        },
+        sizes{
+          data{
+            id,
+            attributes{
+              kind
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`

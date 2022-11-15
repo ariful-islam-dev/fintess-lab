@@ -21,7 +21,7 @@ export const ButtonMaster = styled(('button'))(({ theme, btn, off, disabled, car
   border: 'none',
   display: "flex",
   flexDirection: "row",
-  alignItems: "flex-start",
+  alignItems: "center",
   gap: "10px",
   borderRadius: "8px",
   padding: `${off && "5px 5px" || cart && "2px" ||"16px 32px"}`,
