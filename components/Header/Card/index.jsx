@@ -12,7 +12,7 @@ const CardHeader = () => {
         aria-label="show 17 new notifications"
         color="inherit"
       >
-        <Badge badgeContent={cart.length} color="error">
+        <Badge badgeContent={cart ? cart?.length : "0"} color="error">
           <ShoppingCart />
         </Badge>
       </IconButton>
