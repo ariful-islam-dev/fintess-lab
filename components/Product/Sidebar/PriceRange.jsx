@@ -1,32 +1,21 @@
-import { Box, TextField } from "@mui/material";
+import { Box, Slider } from "@mui/material";
+import { Card } from "../../Styles/Home";
 import { SidebarTitle } from "../../Styles/Product";
 
 const PriceRange = () => {
   return (
-    <div>
+    <Card>
       <SidebarTitle variant="h3" component="h3">
         Price Range
       </SidebarTitle>
-      <Box
-        component="form"
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <TextField
-          label="Minimum Price"
-          placeholder="Placeholder"
-          type="number"
-        />
-        <TextField
-          label="Maximum Price"
-          placeholder="Placeholder"
-          type="number"
+      <Box>
+        <Slider
+          defaultValue={50}
+          aria-label="Default"
+          valueLabelDisplay="auto"
         />
       </Box>
-    </div>
+    </Card>
   );
 };
 

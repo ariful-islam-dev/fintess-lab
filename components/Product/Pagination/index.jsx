@@ -1,21 +1,18 @@
-import { Box } from "@mui/material";
-import Pagination from "@mui/material/Pagination";
+import { Box, Pagination } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import * as React from "react";
 
-export default function ProductPagination() {
-  const handlePaginationChange = (e, page) => {
-    console.log(e.target.value);
-    console.log(page);
-  };
+export default function ProductPagination({ meta, handlePage }) {
+  // console.log(meta.pagination.pageCount);
   return (
-    <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+    <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
       <Stack spacing={5}>
         <Pagination
-          onChange={handlePaginationChange}
-          count={5}
+          onChange={handlePage}
+          count={meta?.pagination?.pageCount}
           variant="outlined"
           shape="rounded"
+          color="primary"
         />
       </Stack>
     </Box>

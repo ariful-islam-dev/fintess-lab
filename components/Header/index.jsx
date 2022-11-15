@@ -5,6 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import { useStoreActions } from "easy-peasy";
 import * as React from "react";
 import { useState } from "react";
+import NavLoading from "../Loading/navLoading";
 import { ButtonMaster } from "../Styles/reusable";
 import AvatarIcon from "./Avatar";
 import CardHeader from "./Card";
@@ -47,14 +48,14 @@ function Header() {
           {/* Mobile Menu */}
 
           <Logo display={{ xs: "none", md: "flex" }} />
-          {loading && <h1>Loading</h1>}
-          {error && <h1>error {error.message}</h1>}
+          {loading && <NavLoading />}
+          {error && <h4>error {error.message}</h4>}
           {data && <Mobile />}
           {/* Desktop Menu */}
 
           <Logo display={{ xs: "flex", md: "none" }} />
-          {loading && <h1>Loading</h1>}
-          {error && <h1>error {error.message}</h1>}
+          {loading && <NavLoading />}
+          {error && <h4>error {error.message}</h4>}
           {data && <Desktop />}
           <SearchBar in />
           <CardHeader />
