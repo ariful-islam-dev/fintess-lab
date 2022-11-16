@@ -52,7 +52,7 @@ const ProductCard = ({ item, popular }) => {
         </CardImageBox>
         <StyledCardContent>
           <CardTitle variant={"h4"}>
-            <Link href={`/products/${item.id}`} passHref>
+            <Link href={`/products/${item.id}`} passHref legacyBehavior>
               <a>{item.attributes.title.slice(0, 15)}</a>
             </Link>
           </CardTitle>

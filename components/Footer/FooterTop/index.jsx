@@ -12,15 +12,15 @@ const footComHeading = [
       },
       {
         name: "Latest Posts",
-        path: "/posts",
+        path: "/products",
       },
       {
         name: "Contact US",
-        path: "/contact",
+        path: "/contract",
       },
       {
         name: "Shop",
-        path: "/posts",
+        path: "/products",
       },
     ],
   },

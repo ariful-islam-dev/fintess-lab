@@ -12,7 +12,7 @@ const Logo = ({ display }) => {
           display: display,
         }}
       >
-        <Link href={"/"} passHref>
+        <Link href={"/"} passHref legacyBehavior>
           <a>
             <Image src={logoImage} alt="Picture of the author" />
           </a>

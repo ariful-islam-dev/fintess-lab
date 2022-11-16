@@ -1,5 +1,7 @@
+
 .container {
   padding: 0 0rem;
+
 }
 
 .main {
@@ -129,4 +131,4 @@
   .logo img {
     filter: invert(1);
   }
-}
+
