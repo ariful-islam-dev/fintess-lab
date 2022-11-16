@@ -18,7 +18,7 @@ export default function Widget({ item }) {
     >
       {Object.values(item)[0].map((list) => (
         <ListItem key={list.name} sx={{ padding: " 0" }}>
-          <Link href={list.path} passHref>
+          <Link href={list.path} passHref legacyBehavior>
             <Anchor> {list.name}</Anchor>
           </Link>
         </ListItem>

@@ -7,7 +7,7 @@ const SectionHeader = ({ title, link }) => {
   return (
     <SectionHeading>
       <SectionTitle>{title}</SectionTitle>
-      <Link href={"/products"}>
+      <Link href={"/products"} legacyBehavior>
         <Href>
           {link}
           <ArrowForwardIos sx={{ fontSize: "12px" }} />
