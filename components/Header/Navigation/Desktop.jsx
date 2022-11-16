@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
+import { useStoreState } from "easy-peasy";
 import React from "react";
-import useHeader from "../../../hooks/useHeader";
 import Dropdown from "./Dropdown";
 
 const Desktop = () => {
-  const { handleOpenNavMenu, open } = useHeader();
-  const pages = ["Men", "Women", "Exercise", "Accessories"];
+  const storeMenu = useStoreState((state) => state.menu.menu);
+
   return (
     <>
       <Box
@@ -16,7 +16,7 @@ const Desktop = () => {
           alignItems: "center",
         }}
       >
-        {pages.map((page) => (
+        {Object.keys(storeMenu)?.map((page) => (
           <Dropdown key={page}>{page}</Dropdown>
         ))}
       </Box>

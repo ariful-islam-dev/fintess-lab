@@ -3,7 +3,10 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
-import * as React from "react";
+import { useStoreState } from "easy-peasy";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import useFilter from "../../../../hooks/useFilter";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -48,24 +51,46 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-const dropMenus = [
-  "Compression Gear",
-  "Workout Gloves",
-  "Knee Support",
-  "Elbow Support",
-  "T-Shirt",
-  "Head Ware",
-];
-
 export default function Dropdown({ children }) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [dropdown, setDropdown] = useState([]);
+  const router = useRouter();
+  const { handleMenu } = useFilter();
+
   const open = Boolean(anchorEl);
+  const {
+    menu: { menu },
+  } = useStoreState((state) => state);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleCategory = (value) => {
+    handleMenu(children, value);
+    handleClose();
+    if (router.pathname !== "/products") {
+      router.push("/products");
+    }
+  };
+
+  useEffect(() => {
+    if (children === "men") {
+      setDropdown(menu.men);
+    }
+    if (children === "women") {
+      setDropdown(menu.women);
+    }
+    if (children === "accessories") {
+      setDropdown(menu.accessories);
+    }
+    if (children === "exercise") {
+      setDropdown(menu.exercise);
+    }
+  }, [children, menu, handleMenu]);
 
   return (
     <div>
@@ -90,8 +115,12 @@ export default function Dropdown({ children }) {
         open={open}
         onClose={handleClose}
       >
-        {dropMenus.map((item) => (
-          <MenuItem onClick={handleClose} disableRipple key={item}>
+        {dropdown.map((item) => (
+          <MenuItem
+            onClick={() => handleCategory(item)}
+            disableRipple
+            key={item}
+          >
             {item}
           </MenuItem>
         ))}
