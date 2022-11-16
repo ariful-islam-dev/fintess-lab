@@ -1,9 +1,10 @@
 import { Box, Grid } from "@mui/material";
 import { Container } from "@mui/system";
-import React from "react";
-import Sidebar from "../sidebar";
-import AccountSecurity from "./AccountSecurity";
-import AccountInformation from "./AccountInformation";
+import AccountSecurity from '../../../components/Dashboard/AccountSecurity';
+import Sidebar from "../../../components/Dashboard/sidebar";
+
+import AccountInformation from '../../../components/Dashboard/AccountInformation';
+
 
 export default function Account() {
   return (

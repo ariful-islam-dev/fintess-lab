@@ -26,17 +26,23 @@ const Item = styled(Paper)(({ theme }) => ({
 const ProductsDetails = ({ data }) => {
   console.log(data);
   const [thumbnail, setThumbnail] = useState(
-    data?.attributes.thumbnails.data[0].attributes.url
+    data?.attributes.thumbnails?.data[0]?.attributes.url
   );
   const info = data?.attributes;
-  const mainImage = data?.attributes.thumbnails.data[0].attributes.url;
-  const subImage = data?.attributes.thumbnails.data;
+  const mainImage = data?.attributes.thumbnails?.data[0]?.attributes.url;
+  const subImage = data?.attributes.thumbnails?.data;
   return (
     <Box sx={{ my: 3 }}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <CardImageBox>
-            <Image src={thumbnail} alt="Card Image" width={500} height={400} />
+            <Image
+              src={thumbnail}
+              alt="Card Image"
+              // layout="fill"
+              height={500}
+              width={450}
+            />
           </CardImageBox>
 
           <Card sx={{ mt: 2 }}>

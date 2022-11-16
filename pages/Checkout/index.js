@@ -1,10 +1,8 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import Shipping from "./Shipping";
-import Payment from "./Payment";
-import OrderSummary from "./OrderSummary";
-import { Container } from "@mui/system";
+
+import { Box, Container, Grid } from "@mui/material";
+import OrderSummary from "../../components/Checkout/OrderSummary";
+import Payment from "../../components/Checkout/Payment";
+import Shipping from "../../components/Checkout/Shipping";
 
 export default function Checkout() {
   return (

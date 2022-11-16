@@ -1,20 +1,7 @@
 
-import { Box, Button } from "@mui/material";
 
+import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { fontFamily } from "@mui/system";
-import { theme } from ".";
-
-export const ButtonMaster = styled(Button)(({ theme, btn, off }) => ({
-  color: `${
-    (btn === "secondary" && theme?.palette?.secondary?.main) ||
-    (btn === "light" && theme.palette?.primary?.main) ||
-    (!btn && theme.palette?.secondary?.gray50)
-=======
-import { Typography } from "@mui/material";
-
-import { styled } from "@mui/material/styles";
-
 
 
 
@@ -30,19 +17,11 @@ export const ButtonMaster = styled(('button'))(({ theme, btn, off, disabled, car
     (btn === "secondary" && theme?.palette?.secondary?.gray50) ||
     (btn === "light" && theme.palette?.primary.light) ||
 
-    (!btn && theme.palette?.primary.main)
-  }`,
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "flex-start",
-  gap: "10px",
-  borderRadius: "8px",
-  padding: `${off ? "4px 12px" : "16px 32px"}`,
-  font: `${off ? theme.font?.interMedium13 : theme.font?.interSemiBold16}`,
-  textTransform: "none",
-
     (disabled && theme.palette?.secondary.gray400) ||
-    (theme.palette?.primary.main)
+    // (theme.palette?.primary.main)
+    (!btn && theme.palette?.primary.main)
+ 
+
   }`,
   border: 'none',
   display: "flex",
@@ -98,4 +77,5 @@ export const Box1 = styled(Box)(({ theme }) => ({
   borderRadius: "12px",
   padding: "24px",
   paddingBottom: "32px",
+}))
 

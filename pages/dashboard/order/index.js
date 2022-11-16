@@ -1,9 +1,8 @@
 import { Grid } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import React from "react";
-import Sidebar from "../sidebar";
-import CustomizedTables from "./Table";
-import Table from "./Table";
+import Sidebar from "../../../components/Dashboard/sidebar";
+import CustomizedTables from "../../../components/Dashboard/Table";
 
 export default function MyOrder() {
   return (
@@ -14,7 +13,7 @@ export default function MyOrder() {
             <Sidebar></Sidebar>
           </Grid>
           <Grid item xs={8}>
-            <CustomizedTables></CustomizedTables>
+            <CustomizedTables></CustomizedTables> 
           </Grid>
         </Grid>
       </Container>

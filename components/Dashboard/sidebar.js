@@ -1,11 +1,10 @@
-import { Box, Grid, List, Typography } from "@mui/material";
-import { Container } from "@mui/system";
-import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import RoomIcon from "@mui/icons-material/Room";
+import { List } from "@mui/material";
 import Link from "next/link";
-import { Box1 } from "../../components/Styles/reusable";
+import React from "react";
+import { Box1 } from "../Styles/reusable";
 
 export default function Sidebar() {
   return (

@@ -1,9 +1,7 @@
+import { Typography } from "@mui/material";
+import { Stack } from "@mui/system";
 import React from "react";
-import { styled } from "@mui/material/styles";
-import { Button, Typography } from "@mui/material";
-import { Box, Stack } from "@mui/system";
-import { Box1, ButtonMaster, Heading3 } from "../../components/Styles/reusable";
-import { theme } from "../../components/Styles";
+import { Box1, ButtonMaster, Heading3 } from "../Styles/reusable";
 
 export default function OrderSummary() {
   return (

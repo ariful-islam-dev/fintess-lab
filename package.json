@@ -9,10 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-
     "@apollo/client": "^3.7.1",
     "@apollo/react-hooks": "^4.0.0",
-
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@hookform/resolvers": "^2.9.10",
@@ -25,6 +23,7 @@
     "graphql": "^16.6.0",
     "lodash": "^4.17.21",
     "next": "12.3.1",
+    "next-auth": "^4.16.4",
     "path": "^0.12.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",

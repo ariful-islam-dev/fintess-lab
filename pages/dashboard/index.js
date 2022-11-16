@@ -1,8 +1,7 @@
-import { Box, Grid, List } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
-import PersonIcon from "@mui/icons-material/Person";
-import Sidebar from "./sidebar";
+import Sidebar from "../../components/Dashboard/sidebar";
 import Account from "./account";
 
 export default function Dashboard() {

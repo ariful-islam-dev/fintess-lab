@@ -1,7 +1,8 @@
 
 import { gql, useQuery } from "@apollo/client";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { useRouter } from "next/router";
+import NavLoading from "../../components/Loading/navLoading";
 import ProductsDetails from "../../components/ProductDetails";
 
 const GET_PRODUCT_BY_ID = gql`
@@ -81,7 +82,7 @@ function Product() {
   const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID,{
     variables: {pId: pId} ,
   });
-  if(loading) return <h1>Loading......</h1>
+  if(loading) return <Box sx={{display:'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}><NavLoading/></Box>
   if(error) return <h1>{error.message}</h1>
   
 

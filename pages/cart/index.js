@@ -1,8 +1,8 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import React from "react";
-import OrderSummary from "../checkout/OrderSummary";
-import ProductList from "./ProductList";
+import ProductList from "../../components/Cart/ProductList";
+import OrderSummary from "../../components/Checkout/OrderSummary";
 
 export default function Cart() {
   return (

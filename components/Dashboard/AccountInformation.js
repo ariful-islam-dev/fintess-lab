@@ -1,8 +1,8 @@
 import { FileUpload } from "@mui/icons-material";
-import { Box, TextField, Typography } from "@mui/material";
+import { TextField } from "@mui/material";
 import { Stack } from "@mui/system";
 import React from "react";
-import { Box1, Heading3 } from "../../../components/Styles/reusable";
+import { Box1, Heading3 } from "../Styles/reusable";
 
 export default function AccountInformation() {
   return (

@@ -1,10 +1,9 @@
 import { Grid, Stack } from "@mui/material";
 import { Box, Container } from "@mui/system";
-import React from "react";
-import Sidebar from "../sidebar";
-import Addresses from "./Addresses";
-import { Typography } from "@mui/material";
+
+import Sidebar from "../../../components/Dashboard/sidebar";
 import { Heading3 } from "../../../components/Styles/reusable";
+import Addresses from "./Addresses";
 
 export default function Address() {
   return (
