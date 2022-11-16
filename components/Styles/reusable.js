@@ -16,9 +16,7 @@ export const ButtonMaster = styled(('button'))(({ theme, btn, off, disabled, car
   background: `${
     (btn === "secondary" && theme?.palette?.secondary?.gray50) ||
     (btn === "light" && theme.palette?.primary.light) ||
-
     (disabled && theme.palette?.secondary.gray400) ||
-    // (theme.palette?.primary.main)
     (!btn && theme.palette?.primary.main)
  
 
@@ -49,11 +47,6 @@ export const ButtonMaster = styled(('button'))(({ theme, btn, off, disabled, car
 }));
 
 
-/**
- * @Heading3
- * @Fontsize: 24px
- * Font weight: semibold
- */
 export const Heading3 = styled("h3")(({ theme, border }) => ({
   color: `${theme.palette.secondary.main}`,
   fontFamily: `${theme.fontName.barlow}`,
@@ -66,12 +59,7 @@ export const Heading3 = styled("h3")(({ theme, border }) => ({
   letterSpacing: "-1%",
 }));
 
-/**
- * @box1
- * Padding: 24px
- * background: white
- * Border radius: 12px
- */
+
 export const Box1 = styled(Box)(({ theme }) => ({
   background: "#fff",
   borderRadius: "12px",

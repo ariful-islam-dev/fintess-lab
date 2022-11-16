@@ -1,16 +1,8 @@
-import React from "react";
-import { styled } from "@mui/material/styles";
 import {
-  Button,
   FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  TextField,
-  Typography,
+  FormControlLabel, Radio, TextField
 } from "@mui/material";
-import { Box, Stack } from "@mui/system";
+import { Stack } from "@mui/system";
 import { Box1, Heading3 } from "../../components/Styles/reusable";
 
 export default function Payment() {

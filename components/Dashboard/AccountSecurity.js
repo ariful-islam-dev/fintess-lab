@@ -1,6 +1,5 @@
-import { TextField, Typography } from "@mui/material";
-import { Box, Stack } from "@mui/system";
-import React from "react";
+import { TextField } from "@mui/material";
+import { Stack } from "@mui/system";
 import { Box1, Heading3 } from "../../../components/Styles/reusable";
 
 export default function AccountSecurity() {
