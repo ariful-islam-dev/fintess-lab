@@ -1,3 +1,4 @@
+
 import { useQuery } from "@apollo/client";
 import client from "../components/apollo/client";
 import Banner from "../components/Home/Banner";
@@ -20,6 +21,7 @@ export default function Home() {
       ></Popular>
 
       <TopImage></TopImage>
+
     </div>
   );
 }

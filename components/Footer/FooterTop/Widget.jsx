@@ -1,6 +1,8 @@
-import { ListItem } from "@mui/material";
-import List from "@mui/material/List";
+
+import { List, ListItem, ListItemText } from "@mui/material";
+
 import Link from "next/link";
+
 import * as React from "react";
 import { Anchor } from "../../Styles/Footer";
 
