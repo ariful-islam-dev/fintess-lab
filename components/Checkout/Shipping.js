@@ -1,9 +1,6 @@
-import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import { Container, Stack } from "@mui/system";
 import { Button, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
+import * as React from "react";
 import { Box1, Heading3 } from "../../components/Styles/reusable";
 
 export default function Shipping() {

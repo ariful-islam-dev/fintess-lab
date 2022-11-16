@@ -1,8 +1,8 @@
-import React from "react";
 import { styled } from "@mui/material/styles";
+import React from "react";
 
-import { Box, Stack } from "@mui/system";
 import { Button, Typography } from "@mui/material";
+import { Box, Stack } from "@mui/system";
 
 export default function Addresses() {
   const Item = styled(Box)(({ theme }) => ({

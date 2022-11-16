@@ -3,7 +3,6 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import RoomIcon from "@mui/icons-material/Room";
 import { List } from "@mui/material";
 import Link from "next/link";
-import React from "react";
 import { Box1 } from "../Styles/reusable";
 
 export default function Sidebar() {

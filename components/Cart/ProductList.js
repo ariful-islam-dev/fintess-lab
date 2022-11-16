@@ -1,8 +1,9 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import { Container, Stack } from "@mui/system";
-import React from "react";
-import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
+import { Button, Grid, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
+import Image from "next/image";
+import React from "react";
 import { Box1, Heading3 } from "../../components/Styles/reusable";
 
 export default function ProductList() {
@@ -11,10 +12,11 @@ export default function ProductList() {
       <Heading3 border>Shipping</Heading3>
       <Grid container spacing={2}>
         <Grid item xs={7} display="flex">
-          <img
+          <Image
             width="30%"
             src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2"
-            alt=""
+            alt="Cart Info"
+            layout="fill"
           />
           <Stack sx={{ ml: 2 }}>
             <Typography variant="body1">
