@@ -1,11 +1,11 @@
 import { Grid, Stack } from "@mui/material";
 import { Box, Container } from "@mui/system";
 
+import Addresses from "../../../components/Dashboard/Addresses";
 import Sidebar from "../../../components/Dashboard/sidebar";
 import { Heading3 } from "../../../components/Styles/reusable";
-import Addresses from "./Addresses";
 
-export default function Address() {
+export default function UserAddress() {
   return (
     <Box sx={{ py: 6 }}>
       <Container>
@@ -16,9 +16,7 @@ export default function Address() {
           <Grid item xs={8}>
             <Stack sx={{ padding: "24px", background: "#fff" }}>
               <Heading3 border>Manage address</Heading3>
-              <Addresses></Addresses>
-              <Addresses></Addresses>
-              <Addresses></Addresses>
+              <Addresses/>
             </Stack>
           </Grid>
         </Grid>

@@ -1,8 +1,9 @@
 import { Box, Grid } from "@mui/material";
 import { Container } from "@mui/system";
-import React from "react";
 import Sidebar from "../../components/Dashboard/sidebar";
-import Account from "./account";
+import UserAccount from "./account";
+
+
 
 export default function Dashboard() {
   return (
@@ -13,7 +14,7 @@ export default function Dashboard() {
             <Sidebar></Sidebar>
           </Grid>
           <Grid item xs={8}>
-            <Account></Account>
+            <UserAccount></UserAccount>
           </Grid>
         </Grid>
       </Container>

@@ -6,7 +6,7 @@ import Sidebar from "../../../components/Dashboard/sidebar";
 import AccountInformation from '../../../components/Dashboard/AccountInformation';
 
 
-export default function Account() {
+export default function UserAccount() {
   return (
     <Box sx={{ py: 6 }}>
       <Container>
