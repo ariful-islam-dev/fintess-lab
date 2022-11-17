@@ -1,6 +1,7 @@
 import { TextField } from "@mui/material";
 import { Stack } from "@mui/system";
-import { Box1, Heading3 } from "../../../components/Styles/reusable";
+import { Box1, Heading3 } from "../Styles/reusable";
+
 
 export default function AccountSecurity() {
   return (
