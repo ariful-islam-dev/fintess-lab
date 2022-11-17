@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { Box1, ButtonMaster, Heading3 } from "../Styles/reusable";
 
 export default function OrderSummary() {
-  const router =useRouter()
+  const router = useRouter();
   return (
     <Box1>
       <Heading3 border variant="h3">
@@ -23,7 +23,9 @@ export default function OrderSummary() {
         <Typography variant="body2">Total</Typography>
         <Typography variant="body1">$538.20</Typography>
       </Stack>
-      <ButtonMaster fullWidth onClick={()=>router.push("/checkout")} >Complete checkout</ButtonMaster>
+      <ButtonMaster fullWidth onClick={() => router.push("/checkout")}>
+        Complete checkout
+      </ButtonMaster>
     </Box1>
   );
 }

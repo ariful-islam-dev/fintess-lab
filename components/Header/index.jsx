@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import { useStoreActions } from "easy-peasy";
+import { useRouter } from "next/router";
 import * as React from "react";
 import { useState } from "react";
 import NavLoading from "../Loading/navLoading";
@@ -17,6 +18,7 @@ import SearchBar from "./SearchBar";
 function Header() {
   const addMenu = useStoreActions((state) => state.menu.addMenu);
   const [user, setUser] = useState({});
+  const router = useRouter();
 
   const GET_CATEGORY = gql`
     query getCategories {
@@ -63,9 +65,8 @@ function Header() {
             <AvatarIcon user={user} />
           ) : (
             <ButtonMaster
+              onClick={() => router.push("/login")}
               btn="secondary"
-              component="a"
-              href="/login"
               sx={{ padding: 1, fontSize: "14px" }}
             >
               Login
