@@ -17,7 +17,6 @@ export default function ProductList() {
             alt="Cart Info"
             width={500}
             height={500}
-      
           />
           <Stack sx={{ ml: 2 }}>
             <Typography variant="body1">
@@ -60,11 +59,10 @@ export default function ProductList() {
       <Grid container spacing={2}>
         <Grid item xs={7} display="flex">
           <Image
-          
             src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2"
             alt="Product"
             width={500}
-           height={500}
+            height={500}
           />
           <Stack sx={{ ml: 2 }}>
             <Typography variant="body1">
