@@ -1,6 +1,6 @@
 
 import { useQuery } from "@apollo/client";
-import client from "../components/apollo/client";
+import client from "../components/Apollo/client";
 import Banner from "../components/Home/Banner";
 import FlashDeals from "../components/Home/FlashDeals";
 import Popular from "../components/Home/Popular";
