@@ -23,7 +23,7 @@ export default function OrderSummary() {
         <Typography variant="body2">Total</Typography>
         <Typography variant="body1">$538.20</Typography>
       </Stack>
-      <ButtonMaster fullWidth onClick={()=>router.push('/checkout')} >Complete checkout</ButtonMaster>
+      <ButtonMaster fullWidth onClick={()=>router.push("/checkout")} >Complete checkout</ButtonMaster>
     </Box1>
   );
 }
