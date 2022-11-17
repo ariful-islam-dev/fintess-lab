@@ -7,12 +7,28 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 import React from "react";
 import useHeader from "../../../hooks/useHeader";
 
 const AvatarIcon = ({ user }) => {
   const { handleCloseUserMenu, handleOpenUserMenu, anchorElUser } = useHeader();
-  const settings = ["Profile", "Account", "Dashboard", "Logout"];
+  const settings = [
+    {
+      name: "Profile",
+      path: "/dashboard",
+    },
+    {
+      name: "Dashboard",
+      path: "/dashboard",
+    },
+    {
+      name: "Logout",
+      path: "/",
+    },
+  ];
+
+  const router = useRouter();
   return (
     <>
       <Box sx={{ flexGrow: 0 }}>
@@ -42,7 +58,12 @@ const AvatarIcon = ({ user }) => {
         >
           {settings.map((setting) => (
             <MenuItem key={setting} onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">{setting}</Typography>
+              <Typography
+                textAlign="center"
+                onClick={() => router.push(`${setting.path}`)}
+              >
+                {setting.name}
+              </Typography>
             </MenuItem>
           ))}
         </Menu>

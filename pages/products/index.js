@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { Box, Container, Grid } from "@mui/material";
+import Head from "next/head";
 import { useState } from "react";
 import Loading from "../../components/Loading";
 import Cards from "../../components/Product/Cards";
@@ -26,6 +27,9 @@ function Products() {
   return (
     <div>
       <Container maxWidth="lg" sx={{ py: "50px" }}>
+        <Head>
+          <title>All Product || Fitness Lab</title>
+        </Head>
         {/**************************** / All Cards Here Start *************************/}
         <Box>
           <Grid container spacing={2}>

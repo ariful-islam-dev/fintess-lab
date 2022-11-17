@@ -1,6 +1,7 @@
 
 import { gql, useQuery } from "@apollo/client";
 import { Box, Container } from "@mui/material";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import NavLoading from "../../components/Loading/navLoading";
 import ProductsDetails from "../../components/ProductDetails";
@@ -82,12 +83,16 @@ function Product() {
   const { loading, error, data } = useQuery(GET_PRODUCT_BY_ID,{
     variables: {pId: pId} ,
   });
-  if(loading) return <Box sx={{display:'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}><NavLoading/></Box>
+  if(loading) return <Box sx={{display:'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+    
+    <Head>Product Details || Fitness Lab</Head>
+    <NavLoading/></Box>
   if(error) return <h1>{error.message}</h1>
   
 
 	return (
 	<Container mexWidth="lg">
+    <Head>Product Details || Fitness Lab</Head>
     <ProductsDetails data={data?.product?.data}/>
   </Container>
 	);
