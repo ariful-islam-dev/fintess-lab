@@ -137,9 +137,9 @@ const ProductsDetails = ({ data }) => {
                       <Box
                         key={size.id}
                         sx={{
-                          background: `#ccc`,
-                          width: "20px",
-                          height: "20px",
+                          padding: "5px",
+                          borderRadius: " 5px",
+                          boxShadow: " 1px 1px 1px #ccc",
                         }}
                       >
                         {size.attributes.kind}
@@ -153,7 +153,7 @@ const ProductsDetails = ({ data }) => {
           <Divider />
           {/* METARIAL */}
           {data?.attributes?.metarial?.data && (
-            <Stack sx={{ flexGrow: 1, my: 6 }}>
+            <Stack sx={{ my: 6 }}>
               <Grid container spacing={2}>
                 <Grid xs={2}>
                   <Typography variant="h5">Material </Typography>
@@ -162,7 +162,7 @@ const ProductsDetails = ({ data }) => {
                   <Stack direction="row" spacing={3}>
                     <Box
                       sx={{
-                        background: `#ccc`,
+                        background: `#ddd`,
                         p: 1,
                         borderRadius: 1,
                       }}

@@ -11,7 +11,7 @@ export default function Popular({ data }) {
         <SectionHeader title={"Popular Product"} link={"View All"} />
         <Grid container spacing={2}>
           {data?.slice(0, 4).map((product) => (
-            <Grid key={product.id} item lg={3}>
+            <Grid key={product.id} item xl={2} lg={3} md={4} sm={6} xs={12}>
               <ProductCard item={product} popular></ProductCard>
             </Grid>
           ))}
