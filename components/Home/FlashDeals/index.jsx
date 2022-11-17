@@ -14,7 +14,7 @@ export default function FlashDeals({ data }) {
         <SectionHeader title={"Flash Deals"} link={"View all"} />
         <Grid container spacing={2}>
           {discountProduct?.slice(0, 4).map((item) => (
-            <Grid item xl={2} lg={3} md={4} sm={6} xs={6} key={item.id}>
+            <Grid item xl={3} lg={3} md={4} sm={6} xs={6} key={item.id}>
               <ProductCard item={item}></ProductCard>
             </Grid>
           ))}
