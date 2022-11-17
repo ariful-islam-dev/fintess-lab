@@ -41,10 +41,11 @@ const Signup = ({ UserLogin, handleLogin }) => {
   const [register, { data, loading, error }] = useMutation(REG_USER);
 
   const onSubmit = (userData) => {
-    login({
+    reg({
       variables: {
         username: userData.username,
         password: userData.password,
+        email: userData.email,
       },
     });
 
