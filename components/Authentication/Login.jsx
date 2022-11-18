@@ -7,6 +7,7 @@ import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { setLocalStore } from "../../utils/storage";
 
 import {
   AuthHeader,
@@ -40,32 +41,27 @@ const Login = ({ handleLogin }) => {
   const [login, { data, loading, error }] = useMutation(LOGIN_USER);
 
   const onSubmit = (userData) => {
-    if (UserLogin) {
-      login({
-        variables: {
-          username: userData.username,
-          password: userData.password,
-        },
-      });
+    login({
+      variables: {
+        username: userData.username,
+        password: userData.password,
+      },
+    });
 
-      if (!error && data) {
-        const {
-          jwt,
-          user: { id, email, username },
-        } = data?.login;
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            id: id,
-            username: username,
-            email: email,
-            accessToken: jwt,
-          })
-        );
-      }
+    if (!error && data) {
+      const {
+        jwt,
+        user: { id, email, username },
+      } = data?.login;
+      const userData = {
+        id,
+        email,
+        username,
+        accessToken: jwt,
+      };
+      setLocalStore("user", userData);
+      router.push("/products");
     }
-
-    router.push("/");
   };
   return (
     <>

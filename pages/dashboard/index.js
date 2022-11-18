@@ -3,9 +3,11 @@ import { Container } from "@mui/system";
 import Sidebar from "../../components/Dashboard/sidebar";
 import UserAccount from "./account";
 
+import { signIn, signOut, useSession } from "next-auth/react";
 
 
 export default function Dashboard() {
+  console.log(useSession(), signIn, signOut)
   return (
     <Box sx={{ py: 6 }}>
       <Container>

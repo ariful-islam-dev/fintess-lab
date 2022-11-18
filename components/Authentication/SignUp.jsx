@@ -6,6 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { useForm } from "react-hook-form";
+import { setLocalStore } from "../../utils/storage";
 
 import {
   AuthHeader,
@@ -33,7 +34,7 @@ const REG_USER = gql`
   }
 `;
 
-const Signup = ({ UserLogin, handleLogin }) => {
+const Signup = ({ handleLogin }) => {
   const { register: reg, handleSubmit, reset, formState, watch } = useForm();
   const { errors } = formState;
   const router = useRouter();
@@ -54,18 +55,17 @@ const Signup = ({ UserLogin, handleLogin }) => {
         jwt,
         user: { id, email, username },
       } = data?.register;
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          id: id,
-          username: username,
-          email: email,
-          accessToken: jwt,
-        })
-      );
-      router.push("/");
+      const newData = {
+        username,
+        email,
+        id,
+        accessToken: jwt,
+      };
+      setLocalStore("user", newData);
     }
+    router.push("/");
   };
+
   return (
     <Card
       sx={{

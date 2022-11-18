@@ -1,22 +1,19 @@
 import { useEffect, useState } from "react";
+import { getLocalStore } from "../utils/storage";
 
 export const useCart = () => {
   const [cart, setCart] = useState([]);
 
   const handleCart = (data) => {
     const newCart = {
-      id: data.id,
-      title: data.attributes.title,
-      quantity: 1,
+      ...data,
     };
 
-    let cart = localStorage.getItem("cart");
-    cart = JSON.parse(cart);
+    let cart = getLocalStore("cart");
 
     if (cart) {
       cart.filter((item) => {
         if (item.id === data.id) {
-          item.quantity = item.quantity + 1;
           localStorage.setItem("cart", JSON.stringify([...cart, newCart]));
           setCart((prev) => [...prev, newCart]);
         } else {
@@ -31,8 +28,7 @@ export const useCart = () => {
   };
 
   useEffect(() => {
-    let newCart = localStorage.getItem("cart");
-    newCart = JSON.parse(newCart);
+    let newCart = getLocalStore("cart");
     setCart(newCart);
   }, []);
 

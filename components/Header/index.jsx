@@ -4,8 +4,9 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import { useStoreActions } from "easy-peasy";
 import { useRouter } from "next/router";
-import * as React from "react";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import { getLocalStore } from "../../utils/storage";
 import NavLoading from "../Loading/navLoading";
 import { ButtonMaster } from "../Styles/reusable";
 import AvatarIcon from "./Avatar";
@@ -37,10 +38,9 @@ function Header() {
   if (data) {
     addMenu(data.categories.data);
   }
-  React.useEffect(() => {
-    const user = localStorage.getItem("user");
-    const newUser = JSON.parse(user);
-    setUser(newUser);
+  useEffect(() => {
+    const user = getLocalStore("user");
+    setUser(user);
   }, []);
 
   return (

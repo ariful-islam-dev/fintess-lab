@@ -10,6 +10,7 @@ import {
 import { useRouter } from "next/router";
 import React from "react";
 import useHeader from "../../../hooks/useHeader";
+import useUser from "../../../hooks/useUser";
 
 const AvatarIcon = ({ user }) => {
   const { handleCloseUserMenu, handleOpenUserMenu, anchorElUser } = useHeader();
@@ -29,6 +30,7 @@ const AvatarIcon = ({ user }) => {
   ];
 
   const router = useRouter();
+  const { handleLogout } = useUser();
   return (
     <>
       <Box sx={{ flexGrow: 0 }}>
@@ -60,7 +62,11 @@ const AvatarIcon = ({ user }) => {
             <MenuItem key={setting} onClick={handleCloseUserMenu}>
               <Typography
                 textAlign="center"
-                onClick={() => router.push(`${setting.path}`)}
+                onClick={
+                  setting.name === "Logout"
+                    ? handleLogout
+                    : () => router.push(`${setting.path}`)
+                }
               >
                 {setting.name}
               </Typography>
