@@ -1,10 +1,16 @@
-
 import { Box, Container, Grid } from "@mui/material";
+import { useRouter } from "next/router";
 import OrderSummary from "../../components/Checkout/OrderSummary";
 import Payment from "../../components/Checkout/Payment";
 import Shipping from "../../components/Checkout/Shipping";
+import useUser from "../../hooks/useUser";
 
 export default function Checkout() {
+  const router = useRouter();
+  const { user } = useUser();
+  if (!user) {
+    router.push("/login");
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Container sx={{ py: 4 }}>

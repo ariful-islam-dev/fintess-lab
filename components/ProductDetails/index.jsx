@@ -12,6 +12,7 @@ import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { useCart } from "../../hooks/useCart";
 import { Card, CardImageBox } from "../Styles/Home";
 
 import { ButtonMaster } from "../Styles/reusable";
@@ -24,13 +25,38 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const ProductsDetails = ({ data }) => {
-  console.log(data);
+  const [quantity, setQuantity] = useState(1);
+  const { cart, handleCart } = useCart();
+
   const [thumbnail, setThumbnail] = useState(
     data?.attributes.thumbnails?.data[0]?.attributes.url
   );
   const info = data?.attributes;
   const mainImage = data?.attributes.thumbnails?.data[0]?.attributes.url;
   const subImage = data?.attributes.thumbnails?.data;
+
+  const handleLocalStorageCart = () => {
+    const newProduct = {
+      id: data.id,
+      title: data?.attributes?.title,
+      thumbnail: thumbnail,
+      quantity: quantity,
+      price: data.attributes?.discount_price
+        ? data.attributes?.discount_price * quantity
+        : data.attributes?.price * quantity,
+    };
+    handleCart(newProduct);
+  };
+  console.log(data);
+
+  const handleIncrementQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
+  const handleDecrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    }
+  };
   return (
     <Box sx={{ my: 3 }}>
       <Grid container spacing={3}>
@@ -190,11 +216,21 @@ const ProductsDetails = ({ data }) => {
               </Grid>
               <Grid item xs={8}>
                 <Stack direction="row" spacing={1}>
-                  <ButtonMaster btn="light" cart="cart">
+                  <ButtonMaster
+                    btn="light"
+                    cart="cart"
+                    onClick={handleDecrementQuantity}
+                    sx={{ cursor: "pointer" }}
+                  >
                     <RemoveIcon />
                   </ButtonMaster>
-                  <Typography variant="h6">1</Typography>
-                  <ButtonMaster btn="light" cart="cart">
+                  <Typography variant="h6">{quantity}</Typography>
+                  <ButtonMaster
+                    btn="light"
+                    cart="cart"
+                    onClick={handleIncrementQuantity}
+                    sx={{ cursor: "pointer" }}
+                  >
                     <AddIcon />
                   </ButtonMaster>
                 </Stack>
@@ -202,7 +238,9 @@ const ProductsDetails = ({ data }) => {
             </Grid>
             <Stack direction="row" marginY={2} spacing={3}>
               <ButtonMaster>Buy now</ButtonMaster>
-              <ButtonMaster btn="light">Add to Cart</ButtonMaster>
+              <ButtonMaster btn="light" onClick={handleLocalStorageCart}>
+                Add to Cart
+              </ButtonMaster>
             </Stack>
           </Stack>
           <Divider />

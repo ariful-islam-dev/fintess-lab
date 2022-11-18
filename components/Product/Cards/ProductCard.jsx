@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCart } from "../../../hooks/useCart";
 
 import AddIcon from "@mui/icons-material/Add";
+import { useRouter } from "next/router";
 import {
   Card,
   CardImageBox,
@@ -14,15 +15,12 @@ import {
 } from "../../Styles/Home";
 import { ButtonMaster } from "../../Styles/reusable";
 const ProductCard = ({ item, popular }) => {
+  const router = useRouter();
   const off = Number.parseFloat(
     (item.attributes.price - item.attributes.discount_price) /
       item.attributes.price
   );
-  const { handleCart, cart } = useCart();
-
-  const handleAddLocalStorage = (item) => {
-    handleCart(item);
-  };
+  const { cart } = useCart();
 
   const product = cart?.find((cat) => cat.id === item.id);
 
@@ -85,35 +83,15 @@ const ProductCard = ({ item, popular }) => {
               </CardPrice>
             )}
 
-            {product ? (
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <ButtonMaster
-                  btn="light"
-                  cart={"cart"}
-                  onClick={() => handleAddLocalStorage(item)}
-                >
-                  <AddIcon />
-                </ButtonMaster>
-                <Typography>{product?.quantity}</Typography>
-                <ButtonMaster
-                  btn="light"
-                  cart={"cart"}
-                  onClick={() => handleAddLocalStorage(item)}
-                >
-                  <AddIcon />
-                </ButtonMaster>
-              </Box>
-            ) : (
-              <Box>
-                <ButtonMaster
-                  btn="light"
-                  cart={"cart"}
-                  onClick={() => handleAddLocalStorage(item)}
-                >
-                  <AddIcon />
-                </ButtonMaster>
-              </Box>
-            )}
+            <Box>
+              <ButtonMaster
+                btn="light"
+                cart={"cart"}
+                onClick={() => router.push(`/products/${item.id}`)}
+              >
+                <AddIcon />
+              </ButtonMaster>
+            </Box>
           </CardPricingSection>
         </StyledCardContent>
       </Card>
