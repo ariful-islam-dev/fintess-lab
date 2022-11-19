@@ -5,6 +5,7 @@ import OrderSummary from "../../components/Checkout/OrderSummary";
 import Payment from "../../components/Checkout/Payment";
 import Shipping from "../../components/Checkout/Shipping";
 import useUser from "../../hooks/useUser";
+import { getLocalStore } from "../../utils/storage";
 
 export default function Checkout() {
   const [data, setData] = useState([]);
