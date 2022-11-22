@@ -1,28 +1,22 @@
-import { useQuery } from "@apollo/client";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import Head from "next/head";
 import { useState } from "react";
+import client from "../../components/Apollo/client";
+import { PRODUCTS_BY_CATEGORY } from "../../components/Apollo/query";
 import Loading from "../../components/Loading";
 import Cards from "../../components/Product/Cards";
 import ProductPagination from "../../components/Product/Pagination";
 import Sidebar from "../../components/Product/Sidebar";
-import { GET_PRODUCT } from "../../utils/action";
 
-function Products() {
-
+function Products({ d }) {
   const [pageNumber, setPageNumber] = useState(1);
   const [variable, setVariable] = useState({});
-  
 
   const handlePage = (e, page) => {
     setPageNumber(page);
   };
-  const {data, loading, error} = useQuery(GET_PRODUCT, {
-    variables: { page: pageNumber },
-  });
 
-
-
+  let { data, error, loading } = d;
 
   return (
     <div>
@@ -39,7 +33,7 @@ function Products() {
             <Grid item lg={9}>
               {loading && <Loading />}
               {error && <h2> {error.message}</h2>}
-              {data && (
+              {data?.products.data?.length > 0 ? (
                 <>
                   <Cards data={data?.products?.data} />
                   {/**************************** / Pagination Start *************************/}
@@ -49,6 +43,8 @@ function Products() {
                   />
                   {/**************************** / Pagination End *************************/}
                 </>
+              ) : (
+                <Typography variant="h2">There is No Data Here</Typography>
               )}
             </Grid>
           </Grid>
@@ -58,5 +54,21 @@ function Products() {
     </div>
   );
 }
+export const getServerSideProps = async (ctx) => {
+  const { type, name, page } = ctx.query;
+  const d = await client.query({
+    query: PRODUCTS_BY_CATEGORY,
+    variables: {
+      Name: name,
+      Type: type
+    },
+  });
+
+  return {
+    props: {
+      d,
+    },
+  };
+};
 
 export default Products;

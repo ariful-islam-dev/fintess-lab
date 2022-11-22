@@ -72,9 +72,6 @@ export default function Dropdown({ children }) {
   const handleCategory = (value) => {
     handleMenu(children, value);
     handleClose();
-    if (router.pathname !== "/products") {
-      router.push("/products");
-    }
   };
 
   useEffect(() => {
