@@ -1,77 +1,12 @@
 
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Box, Container } from "@mui/material";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { GET_PRODUCT_BY_ID } from "../../components/Apollo/query";
 import NavLoading from "../../components/Loading/navLoading";
 import ProductsDetails from "../../components/ProductDetails";
 
-const GET_PRODUCT_BY_ID = gql`
-        query getProductById($pId: ID!){
-          product(id: $pId){
-              data{
-                  id,
-                  attributes{
-                    title,
-                    price,
-                    discount_price,
-                    description,
-                    stock,
-                    thumbnails{
-                      data{ 
-                        id,
-                        attributes{
-                          url
-                        }
-                      }
-                    },
-                    categories{
-                      data{
-                       attributes{
-                         Type,
-                        Name
-                      }
-                      }
-                    },
-                    brand{
-                      data{
-                        attributes{
-                          name
-                        }
-                      }
-                    },
-                    warranty{
-                      data{
-                        attributes{
-                          period
-                        }
-                      }
-                    },
-                    metarial{
-                      data{
-                        attributes{name}
-                      }
-                    },
-                    colors{
-                      data{
-                        attributes{
-                          name
-                        }
-                      }
-                    },
-                    sizes{
-                      data{
-                        attributes{
-                          kind
-                        }
-                      }
-                    }
-                  }
-                }
-          }
-        }
-        
-      `;
 
    
       

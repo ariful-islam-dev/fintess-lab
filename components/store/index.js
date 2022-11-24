@@ -1,15 +1,16 @@
-import { createStore, persist } from "easy-peasy";
+import { createStore } from "easy-peasy";
+import { authStore } from "./AuthModel";
 import { brand } from "./brandModel";
-import { filterCategory } from "./filterCategoryMedel";
+import { cartStore } from "./cartModel";
 import { menu } from "./menuModel";
 import { warranty } from "./warrantyModel";
-const store = createStore(persist({
+const store = createStore({
+auth: authStore,
  menu: menu,
  brand: brand,
- category: filterCategory,
- warranty: warranty
-  
-}));
+ warranty: warranty,
+ cart: cartStore
+});
 
 
 

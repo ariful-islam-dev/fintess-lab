@@ -2,7 +2,7 @@ import { gql, useQuery } from "@apollo/client";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
-import { useStoreActions } from "easy-peasy";
+import { useStoreActions, useStoreState } from "easy-peasy";
 import { useRouter } from "next/router";
 
 import { useEffect, useState } from "react";
@@ -17,7 +17,11 @@ import Mobile from "./Navigation/Mobile";
 import SearchBar from "./SearchBar";
 
 function Header() {
-  const addMenu = useStoreActions((state) => state.menu.addMenu);
+  const {
+    menu: { addMenu },
+    auth: { authStore },
+  } = useStoreActions((state) => state);
+  const auth = useStoreState((state) => state.auth.auth);
   const [user, setUser] = useState({});
   const router = useRouter();
 
@@ -38,11 +42,15 @@ function Header() {
   if (data) {
     addMenu(data.categories.data);
   }
+
   useEffect(() => {
     const user = getLocalStore("user");
-    setUser(user);
-  }, []);
 
+    if (user && !auth.user) {
+      authStore(user);
+    }
+    setUser(auth);
+  }, [auth, authStore]);
   return (
     <AppBar position="static" color={"inherit"}>
       <Container maxWidth="lg">
@@ -61,8 +69,8 @@ function Header() {
           {data && <Desktop />}
           <SearchBar in />
           <CardHeader />
-          {user ? (
-            <AvatarIcon user={user} />
+          {user.user ? (
+            <AvatarIcon user={user?.user} />
           ) : (
             <ButtonMaster
               onClick={() => router.push("/login")}

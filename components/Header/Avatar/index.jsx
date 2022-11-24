@@ -7,10 +7,10 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import { useStoreActions } from "easy-peasy";
 import { useRouter } from "next/router";
 import React from "react";
 import useHeader from "../../../hooks/useHeader";
-import useUser from "../../../hooks/useUser";
 
 const AvatarIcon = ({ user }) => {
   const { handleCloseUserMenu, handleOpenUserMenu, anchorElUser } = useHeader();
@@ -30,14 +30,15 @@ const AvatarIcon = ({ user }) => {
   ];
 
   const router = useRouter();
-  const { handleLogout } = useUser();
+  const { authLogout } = useStoreActions((action) => action.auth);
+  console.log(user);
   return (
     <>
       <Box sx={{ flexGrow: 0 }}>
-        <Tooltip title={user.username}>
+        <Tooltip title={user?.name}>
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
             <Avatar
-              alt={user.username}
+              alt={user?.name}
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYzcsSpJbl4Iokc_4n3EISbGE3hiRVcRkfLw&usqp=CAU"
             />
           </IconButton>
@@ -64,7 +65,7 @@ const AvatarIcon = ({ user }) => {
                 textAlign="center"
                 onClick={
                   setting.name === "Logout"
-                    ? handleLogout
+                    ? () => authLogout()
                     : () => router.push(`${setting.path}`)
                 }
               >

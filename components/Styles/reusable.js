@@ -22,6 +22,7 @@ export const ButtonMaster = styled(('button'))(({ theme, btn, off, disabled, car
 
   }`,
   border: 'none',
+  cursor: 'pointer',
   display: "flex",
   flexDirection: "row",
   alignItems: "center",

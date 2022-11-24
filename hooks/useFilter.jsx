@@ -1,6 +1,8 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const useFilter = () => {
+  const router = useRouter();
   const [menu, setMenu] = useState({});
   const [page, setPage] = useState(1);
   const handleMenu = (children, value) => {
@@ -10,8 +12,8 @@ const useFilter = () => {
       type: value,
     };
     setMenu(newMenu);
+    router.push(`/products?type=${value}&name=${name}&pageNumber=${page} `);
   };
-  // console.log(menu);
   return {
     menu,
     handleMenu,

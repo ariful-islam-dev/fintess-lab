@@ -1,6 +1,6 @@
-import { action } from "easy-peasy";
+import { action, persist } from "easy-peasy";
 
-export const warranty = {
+export const warranty = persist({
     warranty: [],
     addWarranty: action((state, payload)=>{
         payload.data && payload.data.map(item=>{
@@ -9,4 +9,4 @@ export const warranty = {
             }
         })
     })
-}
+})

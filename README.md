@@ -1,3 +1,3 @@
 # Fitness Lab
 
-**_Frontend Application_**
+\*_*Frontend Application*_
