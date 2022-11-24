@@ -9,6 +9,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Paper from "@mui/material/Paper";
 import Rating from "@mui/material/Rating";
 import { styled } from "@mui/material/styles";
+import { useStoreActions } from "easy-peasy";
 import Image from "next/image";
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -27,6 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const ProductsDetails = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
   const { cart, handleCart } = useCart();
+  const { addCart } = useStoreActions((action) => action.cart);
 
   const [thumbnail, setThumbnail] = useState(
     data?.attributes.thumbnails?.data[0]?.attributes.url
@@ -45,9 +47,8 @@ const ProductsDetails = ({ data }) => {
         ? data.attributes?.discount_price * quantity
         : data.attributes?.price * quantity,
     };
-    handleCart(newProduct);
+    addCart(newProduct);
   };
-  console.log(data);
 
   const handleIncrementQuantity = () => {
     setQuantity((prev) => prev + 1);

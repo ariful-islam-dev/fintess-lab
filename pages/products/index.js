@@ -55,12 +55,14 @@ function Products({ d }) {
   );
 }
 export const getServerSideProps = async (ctx) => {
-  const { type, name, page } = ctx.query;
+  const { type, name, pageNumber } = ctx.query;
+ const pageNum = parseInt(pageNumber)
   const d = await client.query({
     query: PRODUCTS_BY_CATEGORY,
     variables: {
       Name: name,
-      Type: type
+      Type: type,
+      // page: pageNum ? pageNum: 1
     },
   });
 

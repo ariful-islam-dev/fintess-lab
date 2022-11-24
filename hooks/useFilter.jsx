@@ -12,9 +12,8 @@ const useFilter = () => {
       type: value,
     };
     setMenu(newMenu);
-    router.push(`/products?type=${value}&name=${name}&page=${page} `);
+    router.push(`/products?type=${value}&name=${name}&pageNumber=${page} `);
   };
-  // console.log(menu);
   return {
     menu,
     handleMenu,

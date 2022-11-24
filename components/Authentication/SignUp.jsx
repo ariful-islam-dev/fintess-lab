@@ -1,12 +1,13 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 // import { useMutation } from "@apollo/react-hooks";
 import { Card, CardContent } from "@mui/material";
 import Button from "@mui/material/Button";
 import CardActions from "@mui/material/CardActions";
+import { useStoreState, useStoreActions } from "easy-peasy";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { setLocalStore } from "../../utils/storage";
+import { REG_USER } from "../Apollo/mutation";
 
 import {
   AuthHeader,
@@ -19,30 +20,18 @@ import {
 } from "../Styles/Auth";
 import { ButtonMaster } from "../Styles/reusable";
 
-const REG_USER = gql`
-  mutation Register($username: String!, $password: String!, $email: String!) {
-    register(
-      input: { username: $username, email: $email, password: $password }
-    ) {
-      jwt
-      user {
-        username
-        email
-        id
-      }
-    }
-  }
-`;
-
 const Signup = ({ handleLogin }) => {
   const { register: reg, handleSubmit, reset, formState, watch } = useForm();
   const { errors } = formState;
   const router = useRouter();
 
+  const { cart } = useStoreState((state) => state.cart);
+  const authAction = useStoreActions((state) => state.auth.authStore);
+
   const [register, { data, loading, error }] = useMutation(REG_USER);
 
   const onSubmit = (userData) => {
-    reg({
+    register({
       variables: {
         username: userData.username,
         password: userData.password,
@@ -51,19 +40,14 @@ const Signup = ({ handleLogin }) => {
     });
 
     if (!error && data) {
-      const {
-        jwt,
-        user: { id, email, username },
-      } = data?.register;
-      const newData = {
-        username,
-        email,
-        id,
-        accessToken: jwt,
-      };
-      setLocalStore("user", newData);
+      if (cart.length > 0) {
+        authAction(data?.register);
+        router.push("/cart");
+      } else {
+        router.push("/products");
+      }
     }
-    router.push("/");
+    router.push("/products");
   };
 
   return (

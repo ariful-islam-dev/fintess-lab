@@ -1,13 +1,14 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 
 // import { useMutation } from "@apollo/react-hooks";
 import { Card, CardContent, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
+import { useStoreActions, useStoreState } from "easy-peasy";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { setLocalStore } from "../../utils/storage";
+import { LOGIN_USER } from "../Apollo/mutation";
 
 import {
   AuthHeader,
@@ -20,23 +21,12 @@ import {
 } from "../Styles/Auth";
 import { ButtonMaster } from "../Styles/reusable";
 
-const LOGIN_USER = gql`
-  mutation Login($username: String!, $password: String!) {
-    login(input: { identifier: $username, password: $password }) {
-      jwt
-      user {
-        username
-        email
-        id
-      }
-    }
-  }
-`;
-
 const Login = ({ handleLogin }) => {
   const { register: reg, handleSubmit, reset, formState, watch } = useForm();
   const { errors } = formState;
   const router = useRouter();
+  const authAction = useStoreActions((action) => action.auth.authStore);
+  const { cart } = useStoreState((state) => state.cart);
 
   const [login, { data, loading, error }] = useMutation(LOGIN_USER);
 
@@ -49,18 +39,12 @@ const Login = ({ handleLogin }) => {
     });
 
     if (!error && data) {
-      const {
-        jwt,
-        user: { id, email, username },
-      } = data?.login;
-      const userData = {
-        id,
-        email,
-        username,
-        accessToken: jwt,
-      };
-      setLocalStore("user", userData);
-      router.push("/products");
+      authAction(data?.login);
+      if (cart.length > 0) {
+        router.push("/cart");
+      } else {
+        router.push("/products");
+      }
     }
   };
   return (

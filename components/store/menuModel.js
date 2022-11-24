@@ -1,6 +1,6 @@
-import { action } from "easy-peasy"
+import { action, persist } from "easy-peasy"
 
-export const menu = {
+export const menu = persist({
     menu: {
         men: [],
         women: [],
@@ -29,4 +29,4 @@ export const menu = {
          }
           )
       }),
-}
+})
