@@ -112,11 +112,11 @@ export default function Dropdown({ children }) {
         open={open}
         onClose={handleClose}
       >
-        {dropdown.map((item) => (
+        {dropdown.map((item, idx) => (
           <MenuItem
             onClick={() => handleCategory(item)}
             disableRipple
-            key={item}
+            key={idx}
           >
             {item}
           </MenuItem>

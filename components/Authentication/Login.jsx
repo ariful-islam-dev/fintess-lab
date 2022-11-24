@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { LOGIN_USER } from "../Apollo/mutation";
 
 import {
@@ -40,6 +41,7 @@ const Login = ({ handleLogin }) => {
 
     if (!error && data) {
       authAction(data?.login);
+      toast("Login Successful! your user name is " + data?.login.user.username);
       if (cart.length > 0) {
         router.push("/cart");
       } else {

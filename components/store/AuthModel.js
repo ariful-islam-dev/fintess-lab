@@ -1,4 +1,5 @@
 import { action, persist } from "easy-peasy";
+import { toast } from 'react-toastify';
 import { removeLocalStorage, setLocalStore } from "../../utils/storage";
 
 
@@ -18,12 +19,13 @@ export const authStore = persist({
         }else{
             state.auth = user
             setLocalStore('user', user)
-
+            
         }
     }),
     authLogout: action((state, payload)=>{
         state.auth = {}
         removeLocalStorage('user')
+        toast('Successfully Logout')
     })
 })
 

@@ -22,7 +22,7 @@ const ProductCard = ({ item, popular }) => {
   );
   const { cart } = useCart();
 
-  const product = cart?.find((cat) => cat.id === item.id);
+  // const product = cart?.find((cat) => cat.id === item.id);
 
   return (
     <div>

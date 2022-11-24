@@ -16,8 +16,8 @@ const Desktop = () => {
           alignItems: "center",
         }}
       >
-        {Object.keys(storeMenu)?.map((page) => (
-          <Dropdown key={page}>{page}</Dropdown>
+        {Object.keys(storeMenu)?.map((page, idx) => (
+          <Dropdown key={idx}>{page}</Dropdown>
         ))}
       </Box>
     </>
