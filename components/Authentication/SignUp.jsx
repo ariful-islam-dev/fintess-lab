@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client";
 import { Card, CardContent } from "@mui/material";
 import Button from "@mui/material/Button";
 import CardActions from "@mui/material/CardActions";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { useStoreActions, useStoreState } from "easy-peasy";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { useForm } from "react-hook-form";
@@ -40,8 +40,8 @@ const Signup = ({ handleLogin }) => {
     });
 
     if (!error && data) {
+      authAction(data?.register);
       if (cart.length > 0) {
-        authAction(data?.register);
         router.push("/cart");
       } else {
         router.push("/products");
