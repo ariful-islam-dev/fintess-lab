@@ -4,27 +4,35 @@ import { setLocalStore } from "../../utils/storage";
 export const cartStore = persist({
   cart: [],
   addCart: action((state, payload) => {
-    console.log(payload)
-    if(state.cart.length === 0){
-      if(payload?.productId){
-        state.cart.push(payload)
-        setLocalStore('cart', JSON.stringify([payload]))
-      }
-      else{
-        state.cart = [...payload.userCart]
-      }
+
+    if(Array.isArray(payload)){
+      state.cart = payload
     }
+    
 
     if (state.cart.length > 0) {
-      const extCart = state.cart.filter((item) => {
-        if (item.id === payload.productId) {
-         return item.productId !== payload.productId  
-        } 
-      });
-      state.cart = [...extCart, payload];
-      setLocalStore('cart', JSON.stringify([...extCart, payload]))
+      const extCart = state.cart.find(item=>item.productId === payload.productId)
+      if(extCart){
+
+        extCart.quantity = payload.quantity;
+        setLocalStore('cart', [...state.cart])
+        state.cart = [...state.cart];
+      }else{
+        setLocalStore('cart', [...state.cart, payload])
+      state.cart.push(payload)
+      }
+      
+    }else{
+      setLocalStore('cart', [payload])
+      state.cart.push(payload)
     }
 
 
   }),
+  removeCart: action((state, payload)=>{
+    const cartItem = state.cart.filter(item=>item.productId !== payload);
+
+    setLocalStore('cart', cartItem)
+    state.cart = cartItem
+  })
 });

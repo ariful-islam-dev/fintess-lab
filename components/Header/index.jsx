@@ -45,7 +45,6 @@ function Header() {
 
   useEffect(() => {
     const user = getLocalStore("user");
-
     if (user && !auth.user) {
       authStore(user);
     }

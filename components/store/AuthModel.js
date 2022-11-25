@@ -9,12 +9,12 @@ export const authStore = persist({
         const user = {
             accessToken: payload.jwt,
             user: {
-                name: payload.user.username,
+                username: payload.user?.username,
                 email: payload.user.email,
                 id: payload.user.id
             }
         }
-        if(payload.user.name){
+        if(payload.user?.name){
             state.auth = payload
         }else{
             state.auth = user

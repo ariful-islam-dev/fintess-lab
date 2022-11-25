@@ -1,5 +1,6 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import Head from "next/head";
+import Link from "next/link";
 import { useState } from "react";
 import client from "../../components/Apollo/client";
 import { PRODUCTS_BY_CATEGORY } from "../../components/Apollo/query";
@@ -7,6 +8,7 @@ import Loading from "../../components/Loading";
 import Cards from "../../components/Product/Cards";
 import ProductPagination from "../../components/Product/Pagination";
 import Sidebar from "../../components/Product/Sidebar";
+import { Card } from "../../components/Styles/Home";
 
 function Products({ d }) {
   const [pageNumber, setPageNumber] = useState(1);
@@ -27,10 +29,14 @@ function Products({ d }) {
         {/**************************** / All Cards Here Start *************************/}
         <Box>
           <Grid container spacing={2}>
-            <Grid item lg={3}>
+            <Grid item lg={3} md={4}>
               <Sidebar />
             </Grid>
-            <Grid item lg={9}>
+            <Grid item lg={9} md={8}>
+              <Card sx={{display: 'flex', justifyContent: 'space-between', mb: 2}}>
+                <Typography variant="h6"><Link href="/products" legacyBehavior>All Products</Link></Typography>
+                <Typography variant="h6">Sort Products</Typography>
+              </Card>
               {loading && <Loading />}
               {error && <h2> {error.message}</h2>}
               {data?.products.data?.length > 0 ? (
