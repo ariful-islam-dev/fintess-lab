@@ -14,7 +14,7 @@ export default function Sidebar() {
     >
       <List>
         {/* <Link href="/">Home</Link> */}
-        <Link href="/dashboard/account">
+        <Link href="/dashboard">
           <a>
             <PersonIcon fontSize="20px" /> Account information
           </a>

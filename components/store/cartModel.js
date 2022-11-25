@@ -1,24 +1,38 @@
 import { action, persist } from "easy-peasy";
-import { getLocalStore, setLocalStore } from "../../utils/storage";
+import { setLocalStore } from "../../utils/storage";
 
 export const cartStore = persist({
   cart: [],
   addCart: action((state, payload) => {
-    let localCart = getLocalStore("cart");
 
-    if (localCart) {
-      cart.filter((item) => {
-        if (item.id === payload.data.id) {
-          setLocalStore("cart", JSON.stringify([...state.cart, payload.data]));
-          state.cart.push(item);
-        } else {
-          state.cart.push(payload.data);
-          setLocalStore("cart", JSON.stringify([...state.cart, payload.data]));
-        }
-      });
-    } else {
-      setLocalStore("cart", JSON.stringify([payload.data]));
-      state.cart.push(payload.data);
+    if(Array.isArray(payload)){
+      state.cart = payload
     }
+    
+
+    if (state.cart.length > 0) {
+      const extCart = state.cart.find(item=>item.productId === payload.productId)
+      if(extCart){
+
+        extCart.quantity = payload.quantity;
+        setLocalStore('cart', [...state.cart])
+        state.cart = [...state.cart];
+      }else{
+        setLocalStore('cart', [...state.cart, payload])
+      state.cart.push(payload)
+      }
+      
+    }else{
+      setLocalStore('cart', [payload])
+      state.cart.push(payload)
+    }
+
+
   }),
+  removeCart: action((state, payload)=>{
+    const cartItem = state.cart.filter(item=>item.productId !== payload);
+
+    setLocalStore('cart', cartItem)
+    state.cart = cartItem
+  })
 });

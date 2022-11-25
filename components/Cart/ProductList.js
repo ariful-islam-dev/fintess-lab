@@ -2,11 +2,13 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import { Button, Grid, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
+import { useStoreActions } from "easy-peasy";
 import Image from "next/image";
 import React from "react";
 import { Box1, Heading3 } from "../../components/Styles/reusable";
 
 export default function ProductList({ data }) {
+  const {removeCart}=useStoreActions(actions=>actions.cart)
   return (
     <Box1>
       <Heading3 border>Shipping</Heading3>
@@ -27,7 +29,7 @@ export default function ProductList({ data }) {
                 </Typography>
                 
                 <Grid>
-                  <Button variant="text">Remove</Button>
+                  <Button variant="text" onClick={()=>removeCart(`${item.productId}`)}>Remove</Button>
                 </Grid>
               </Stack>
             </Grid>

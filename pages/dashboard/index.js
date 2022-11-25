@@ -1,13 +1,21 @@
 import { Box, Grid } from "@mui/material";
 import { Container } from "@mui/system";
+import AccountSecurity from '../../components/Dashboard/AccountSecurity';
 import Sidebar from "../../components/Dashboard/sidebar";
-import UserAccount from "./account";
 
-
+import { useRouter } from "next/router";
+import AccountInformation from '../../components/Dashboard/AccountInformation';
+import useUser from "../../hooks/useUser";
 
 
 export default function Dashboard() {
  
+ 
+  const router = useRouter();
+  const { user } = useUser();
+  if (!user) {
+    router.push("/login");
+  }
   return (
     <Box sx={{ py: 6 }}>
       <Container>
@@ -16,7 +24,8 @@ export default function Dashboard() {
             <Sidebar></Sidebar>
           </Grid>
           <Grid item xs={8}>
-            <UserAccount></UserAccount>
+            <AccountInformation></AccountInformation>
+            <AccountSecurity></AccountSecurity>
           </Grid>
         </Grid>
       </Container>

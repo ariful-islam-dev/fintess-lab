@@ -7,8 +7,8 @@ import { useStoreActions, useStoreState } from "easy-peasy";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { REG_USER } from "../Apollo/mutation";
-
 import {
   AuthHeader,
   AuthHeading,
@@ -41,6 +41,10 @@ const Signup = ({ handleLogin }) => {
 
     if (!error && data) {
       authAction(data?.register);
+      toast(
+        "Successfully your account has been created. Your user name is " +
+          data?.register.user.username
+      );
       if (cart.length > 0) {
         router.push("/cart");
       } else {

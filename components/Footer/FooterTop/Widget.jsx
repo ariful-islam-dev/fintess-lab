@@ -1,5 +1,4 @@
-
-import { List, ListItem, ListItemText } from "@mui/material";
+import { List, ListItem } from "@mui/material";
 
 import Link from "next/link";
 
@@ -18,8 +17,8 @@ export default function Widget({ item }) {
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
-      {Object.values(item)[0].map((list) => (
-        <ListItem key={list.name} sx={{ padding: " 0" }}>
+      {Object.values(item)[0].map((list, idx) => (
+        <ListItem key={idx} sx={{ padding: " 0" }}>
           <Link href={list.path} passHref legacyBehavior>
             <Anchor> {list.name}</Anchor>
           </Link>

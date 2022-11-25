@@ -1,12 +1,20 @@
 import { ShoppingCart } from "@mui/icons-material";
 import { Badge, IconButton } from "@mui/material";
+import { useStoreActions, useStoreState } from "easy-peasy";
 import { useRouter } from "next/router";
-import React from "react";
-import { useCart } from "../../../hooks/useCart";
+import { useEffect } from "react";
+import { getLocalStore } from "../../../utils/storage";
 
 const CardHeader = () => {
-  const { cart } = useCart();
+  const { cart } = useStoreState((state) => state.cart);
+  const { addCart } = useStoreActions((state) => state.cart);
   const router = useRouter();
+  useEffect(() => {
+    const userCart = getLocalStore("cart");
+    if (userCart && cart.length === 0) {
+      addCart(userCart);
+    }
+  }, [cart, addCart]);
   return (
     <>
       <IconButton
@@ -15,7 +23,10 @@ const CardHeader = () => {
         color="inherit"
         onClick={() => router.push("/cart")}
       >
-        <Badge badgeContent={cart ? cart?.length : "0"} color="error">
+        <Badge
+          badgeContent={cart ? (cart?.length).toString() : "0"}
+          color="error"
+        >
           <ShoppingCart />
         </Badge>
       </IconButton>

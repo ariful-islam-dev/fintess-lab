@@ -31,14 +31,13 @@ const AvatarIcon = ({ user }) => {
 
   const router = useRouter();
   const { authLogout } = useStoreActions((action) => action.auth);
-  console.log(user);
   return (
     <>
       <Box sx={{ flexGrow: 0 }}>
-        <Tooltip title={user?.name}>
+        <Tooltip title={user?.username}>
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
             <Avatar
-              alt={user?.name}
+              alt={user?.username}
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYzcsSpJbl4Iokc_4n3EISbGE3hiRVcRkfLw&usqp=CAU"
             />
           </IconButton>

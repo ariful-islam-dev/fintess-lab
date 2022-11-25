@@ -13,7 +13,6 @@ import { useStoreActions } from "easy-peasy";
 import Image from "next/image";
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { useCart } from "../../hooks/useCart";
 import { Card, CardImageBox } from "../Styles/Home";
 
 import { ButtonMaster } from "../Styles/reusable";
@@ -27,19 +26,17 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const ProductsDetails = ({ data }) => {
   const [quantity, setQuantity] = useState(1);
-  const { cart, handleCart } = useCart();
   const { addCart } = useStoreActions((action) => action.cart);
 
   const [thumbnail, setThumbnail] = useState(
     data?.attributes.thumbnails?.data[0]?.attributes.url
   );
   const info = data?.attributes;
-  const mainImage = data?.attributes.thumbnails?.data[0]?.attributes.url;
   const subImage = data?.attributes.thumbnails?.data;
 
   const handleLocalStorageCart = () => {
     const newProduct = {
-      id: data.id,
+      productId: data.id,
       title: data?.attributes?.title,
       thumbnail: thumbnail,
       quantity: quantity,
@@ -47,6 +44,7 @@ const ProductsDetails = ({ data }) => {
         ? data.attributes?.discount_price * quantity
         : data.attributes?.price * quantity,
     };
+
     addCart(newProduct);
   };
 
