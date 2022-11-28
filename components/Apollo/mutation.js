@@ -27,3 +27,16 @@ export const REG_USER = gql`
     }
   }
 `;
+
+export const USER_PROFILE= gql`
+mutation CreateProfile($name: String, $phone: String, $user: ID, $publishedAt: DateTime){
+  createProfile(data:{name: $name, phone:$phone, user:$user, publishedAt: $publishedAt}){
+	data{
+    id,
+    attributes{
+      name
+    }
+  }    
+  }
+}
+`;

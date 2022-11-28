@@ -3,12 +3,16 @@ import { Container } from "@mui/system";
 import AccountSecurity from '../../components/Dashboard/AccountSecurity';
 import Sidebar from "../../components/Dashboard/sidebar";
 
+import { useStoreState } from "easy-peasy";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import AccountInformation from '../../components/Dashboard/AccountInformation';
 import useUser from "../../hooks/useUser";
 
 
+
 export default function Dashboard() {
+  const {auth}=useStoreState(state=>state.auth)
  
  
   const router = useRouter();
@@ -16,6 +20,11 @@ export default function Dashboard() {
   if (!user) {
     router.push("/login");
   }
+  useEffect(()=>{
+    if(!auth.user){
+      router.push("/login");
+    }
+  }, [auth, router])
   return (
     <Box sx={{ py: 6 }}>
       <Container>

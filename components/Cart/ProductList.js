@@ -12,6 +12,9 @@ export default function ProductList({ data }) {
   return (
     <Box1>
       <Heading3 border>Shipping</Heading3>
+      {data.length === 0 &&
+        <Typography variant='h2'> Sorry Your Cart is Empty! Please Add any Product</Typography>
+      }
       <Grid container spacing={2}>
         {data?.map((item) => (
           <>

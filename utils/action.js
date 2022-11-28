@@ -81,19 +81,6 @@ query Brands{
       
 `
 
-export const GET_CATEGORIES = gql`
-query{    
-  warranties{
-    data {
-      id,
-      attributes{
-        period
-      }
-     
-      }
-  }
-}
-`
 
 export const GET_MATERIALS = gql`
 query{    

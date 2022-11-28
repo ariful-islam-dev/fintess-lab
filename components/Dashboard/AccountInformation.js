@@ -1,13 +1,33 @@
+import { useQuery } from "@apollo/client";
 import { FileUpload } from "@mui/icons-material";
+import EditIcon from '@mui/icons-material/Edit';
 import { TextField } from "@mui/material";
 import { Stack } from "@mui/system";
+import { useStoreState } from "easy-peasy";
 import React from "react";
-import { Box1, Heading3 } from "../Styles/reusable";
+import useModal from "../../hooks/useModal";
+import { GET_USER_PROFILE } from "../Apollo/query";
+import { SectionHeading } from "../Styles/Home";
+import { Box1, ButtonMaster, Heading3 } from "../Styles/reusable";
+import Profile from "./Profile/ProfileForm";
 
 export default function AccountInformation() {
+  const {auth}=useStoreState(state=> state.auth)
+  const {handleClickOpen, open, handleClose}=useModal()
+  const {data, loading}=useQuery(GET_USER_PROFILE, {
+    variables: {id: auth?.user?.id}
+  })
+
+
   return (
     <Box1>
-      <Heading3 border>Account information</Heading3>
+      <SectionHeading>
+      <Heading3 border>{data ? data?.usersPermissionsUser.data.attributes.profile.data.attributes.name: "Account information"}</Heading3>
+      <ButtonMaster onClick={handleClickOpen} btn="light" ><EditIcon/></ButtonMaster>
+      
+        <Profile open={open} handleClose={handleClose}/>
+     
+      </SectionHeading>
       <Stack rowGap={3}>
         <Stack direction="row" spacing={3}>
           <FileUpload></FileUpload>
@@ -21,20 +41,11 @@ export default function AccountInformation() {
               borderRadius: "10px",
             }}
             id="outlined-basic"
-            label="First name"
+            disabled
             variant="outlined"
+            value={data?.usersPermissionsUser.data.attributes.profile.data.attributes.name}
           />
-          <TextField
-            sx={{
-              width: "50%",
-              background: "#fff",
-              border: "1px solid #E5E7EB",
-              borderRadius: "10px",
-            }}
-            id="outlined-basic"
-            label="Last name"
-            variant="outlined"
-          />
+        
         </Stack>
         <Stack direction="row" spacing={3}>
           <TextField
@@ -45,8 +56,9 @@ export default function AccountInformation() {
               borderRadius: "10px",
             }}
             id="outlined-basic"
-            label="Phone number"
+            disabled
             variant="outlined"
+            value={data?.usersPermissionsUser.data.attributes.profile.data.attributes.phone}
           />
           <TextField
             sx={{
@@ -56,8 +68,9 @@ export default function AccountInformation() {
               borderRadius: "10px",
             }}
             id="outlined-basic"
-            label="Gender"
+            disabled
             variant="outlined"
+            value={data?.usersPermissionsUser.data.attributes.email}
           />
         </Stack>
       </Stack>
