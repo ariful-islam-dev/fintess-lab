@@ -29,7 +29,7 @@ export const InputBox = styled(Box)(({theme})=>({
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    width: '100%',
+    width: '500px',
     padding: "10px 0"
 }))
 

@@ -1,5 +1,5 @@
 import { action, persist } from "easy-peasy";
-import { setLocalStore } from "../../utils/storage";
+import { removeLocalStorage, setLocalStore } from "../../utils/storage";
 
 export const cartStore = persist({
   cart: [],
@@ -31,8 +31,13 @@ export const cartStore = persist({
   }),
   removeCart: action((state, payload)=>{
     const cartItem = state.cart.filter(item=>item.productId !== payload);
+    if(cartItem.length > 0){
+      state.cart = cartItem
+      setLocalStore('cart', cartItem)
 
-    setLocalStore('cart', cartItem)
-    state.cart = cartItem
+    }else{
+      removeLocalStorage('cart')
+      state.cart = []
+    }
   })
 });

@@ -1,12 +1,12 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import { useStoreActions, useStoreState } from "easy-peasy";
 import { useRouter } from "next/router";
 
-import { useEffect, useState } from "react";
-import { getLocalStore } from "../../utils/storage";
+import { useState } from "react";
+import { GET_CATEGORY } from "../Apollo/query";
 import NavLoading from "../Loading/navLoading";
 import { ButtonMaster } from "../Styles/reusable";
 import AvatarIcon from "./Avatar";
@@ -16,7 +16,9 @@ import Desktop from "./Navigation/Desktop";
 import Mobile from "./Navigation/Mobile";
 import SearchBar from "./SearchBar";
 
-function Header() {
+function Header({ categories }) {
+  // const [data, setData] = useState(null);
+
   const {
     menu: { addMenu },
     auth: { authStore },
@@ -25,31 +27,23 @@ function Header() {
   const [user, setUser] = useState({});
   const router = useRouter();
 
-  const GET_CATEGORY = gql`
-    query getCategories {
-      categories(pagination: { page: 1, pageSize: 40 }) {
-        data {
-          id
-          attributes {
-            Name
-            Type
-          }
-        }
-      }
-    }
-  `;
   const { loading, error, data } = useQuery(GET_CATEGORY);
   if (data) {
-    addMenu(data.categories.data);
+    addMenu(data?.categories?.data);
   }
 
-  useEffect(() => {
-    const user = getLocalStore("user");
-    if (user && !auth.user) {
-      authStore(user);
-    }
-    setUser(auth);
-  }, [auth, authStore]);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://fitness-gym82.herokuapp.com/api/categories")
+  //     .then((data) => {
+  //       setData(data.data);
+  //     });
+  //   const user = getLocalStore("user");
+  //   if (user && !auth.user) {
+  //     authStore(user);
+  //   }
+  //   setUser(auth);
+  // }, [auth, authStore]);
   return (
     <AppBar position="static" color={"inherit"}>
       <Container maxWidth="lg">
@@ -85,4 +79,18 @@ function Header() {
     </AppBar>
   );
 }
+
+// export const getServerSideProps = async () => {
+//   const { data } = await client.query({
+//     query: GET_CATEGORY,
+//   });
+//   console.log(data);
+
+//   return {
+//     props: {
+//       categories: data,
+//     },
+//   };
+// };
+
 export default Header;

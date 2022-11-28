@@ -1,14 +1,23 @@
 import { useQuery } from "@apollo/client";
 import { Box } from "@mui/material";
 import React from "react";
-import { GET_CATEGORIES } from "../../../utils/action";
+import { GET_WARRANTY } from "../../Apollo/query";
 import NavLoading from "../../Loading/navLoading";
 import { Card } from "../../Styles/Home";
 import { SidebarTitle } from "../../Styles/Product";
 import SidebarItems from "./SidebarItems";
 
 const Warranties = () => {
-  const { data, error, loading } = useQuery(GET_CATEGORIES);
+  // const [data, setData] = useState(null);
+  // const [error, setError] = useState(null);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("https://fitness-gym82.herokuapp.com/api/warranties")
+  //     .then((d) => setData(d.data))
+  //     .catch((err) => setError(err));
+  // }, [data]);
+  const { loading, data, error } = useQuery(GET_WARRANTY);
 
   return (
     <Card>

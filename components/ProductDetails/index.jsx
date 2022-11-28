@@ -72,7 +72,7 @@ const ProductsDetails = ({ data }) => {
 
           <Card sx={{ mt: 2 }}>
             <Stack direction="row" mt={1} spacing={1}>
-              {subImage.slice(0, 4).map((item) => (
+              {subImage?.map((item) => (
                 <Box key={item.id}>
                   <Image
                     src={item.attributes.url}
@@ -91,7 +91,7 @@ const ProductsDetails = ({ data }) => {
           ###########################################*/}
         <Grid item xs={12} md={6}>
           <Stack sx={{ flexGrow: 1, mb: 6 }}>
-            <Typography variant="h6">{data.attributes.title}</Typography>
+            <Typography variant="h6">{data?.attributes.title}</Typography>
             <Stack
               direction="row"
               spacing={1}
@@ -100,24 +100,25 @@ const ProductsDetails = ({ data }) => {
               <Rating sx={{ pr: 3 }} name="read-only" readOnly />
 
               <Typography>
-                Brand: {data.attributes.brand.data?.attributes?.name}{" "}
+                Brand: {data?.attributes.brand.data?.attributes?.name}{" "}
               </Typography>
             </Stack>
             <Stack direction="row" spacing={3}>
               {info?.discount_price && (
-                <Typography>Present Price:{info.discount_price} </Typography>
+                <Typography>Present Price:{info?.discount_price} </Typography>
               )}
-              <Typography>Price:{info.price} </Typography>
+              <Typography>Price:{info?.price} </Typography>
               {info?.discount_price && (
                 <Typography>
                   You save:
-                  {info.discount_price
-                    ? `${`${(info.price - info.discount_price).toFixed(
+                  {info?.discount_price
+                    ? `${`${(info?.price - info?.discount_price).toFixed(
                         2
                       )} ( ${Math.floor(
-                        ((info.price - info.discount_price) / info.price) * 100
+                        ((info?.price - info?.discount_price) / info?.price) *
+                          100
                       )}) % `}`
-                    : `${info.price}`}
+                    : `${info?.price}`}
                 </Typography>
               )}
             </Stack>
@@ -133,7 +134,7 @@ const ProductsDetails = ({ data }) => {
                 </Grid>
                 <Grid xs={10}>
                   <Stack direction="row" spacing={3}>
-                    {data.attributes.colors.data.map((cl) => (
+                    {data?.attributes.colors.data.map((cl) => (
                       <Box
                         key={cl.id}
                         sx={{
@@ -244,7 +245,7 @@ const ProductsDetails = ({ data }) => {
           </Stack>
           <Divider />
           <Stack>
-            {info.warranty?.data && (
+            {info?.warranty?.data && (
               <Stack
                 sz={{
                   mt: 2,
@@ -263,11 +264,11 @@ const ProductsDetails = ({ data }) => {
                   }}
                   color="primary"
                 >
-                  {info.warranty.data.attributes.period.toUpperCase()}
+                  {info?.warranty.data.attributes.period.toUpperCase()}
                 </Box>
               </Stack>
             )}
-            {info.categories.data?.length !== 0 && (
+            {info?.categories.data?.length !== 0 && (
               <Stack
                 sx={{
                   mt: 2,
@@ -280,7 +281,7 @@ const ProductsDetails = ({ data }) => {
                 <Typography variant="h5">Categories </Typography>
 
                 <Stack direction="row" spacing={3}>
-                  {info.categories.data?.map((cat) => (
+                  {info?.categories.data?.map((cat) => (
                     <Box
                       key={cat.id}
                       sx={{
@@ -305,7 +306,7 @@ const ProductsDetails = ({ data }) => {
       <Box sx={{ flexGrow: 1, my: 5, bgcolor: "#ffff", p: 4, borderRadius: 2 }}>
         <Box sx={{ py: 6 }}>
           <Typography variant="h4">Spesification</Typography>
-          <ReactMarkdown>{data.attributes.description}</ReactMarkdown>
+          <ReactMarkdown>{data?.attributes.description}</ReactMarkdown>
         </Box>
         <Divider />
 
